@@ -1,843 +1,374 @@
-/* =========================================
-   MUSIC
-========================================= */
-
-const music =
-    document.getElementById("music");
-
-const musicToggle =
-    document.getElementById("musicToggle");
-
-const musicStatus =
-    document.getElementById("musicStatus");
+document.addEventListener("DOMContentLoaded", () => {
 
 
-if (musicToggle && music) {
+    /* =========================
+       MUSIC
+    ========================= */
 
-    musicToggle.addEventListener(
-        "click",
-        toggleMusic
-    );
+    const music =
+        document.getElementById("music");
 
-}
+    const musicToggle =
+        document.getElementById("musicToggle");
+
+    const musicStatus =
+        document.getElementById("musicStatus");
 
 
-function toggleMusic() {
+    if (music && musicToggle) {
 
-    if (music.paused) {
+        musicToggle.addEventListener("click", () => {
 
-        music.play()
+            if (music.paused) {
 
-            .then(() => {
+                music.play()
+                    .then(() => {
 
-                musicToggle.classList.add(
-                    "active"
+                        musicToggle.classList.add("active");
+
+                        if (musicStatus) {
+                            musicStatus.textContent = "Playing...";
+                        }
+
+                    })
+                    .catch(() => {
+
+                        if (musicStatus) {
+                            musicStatus.textContent =
+                                "Tap again to play";
+                        }
+
+                    });
+
+            } else {
+
+                music.pause();
+
+            }
+
+        });
+
+
+        music.addEventListener("pause", () => {
+
+            musicToggle.classList.remove("active");
+
+            if (musicStatus) {
+                musicStatus.textContent = "Paused";
+            }
+
+        });
+
+    }
+
+
+    /* =========================
+       FLOATING FLOWERS
+    ========================= */
+
+    const flowerContainer =
+        document.querySelector(".flowers");
+
+
+    const flowers = [
+        "✿",
+        "❀",
+        "❁",
+        "✾",
+        "✽",
+        "❋"
+    ];
+
+
+    function createFlower() {
+
+        if (!flowerContainer) return;
+
+        const flower =
+            document.createElement("div");
+
+        flower.className = "flower";
+
+        flower.innerHTML =
+            flowers[
+                Math.floor(
+                    Math.random() * flowers.length
+                )
+            ];
+
+        flower.style.left =
+            Math.random() * 100 + "%";
+
+        flower.style.fontSize =
+            Math.random() * 12 + 10 + "px";
+
+        flower.style.animationDuration =
+            Math.random() * 7 + 8 + "s";
+
+        flowerContainer.appendChild(flower);
+
+
+        setTimeout(() => {
+
+            flower.remove();
+
+        }, 18000);
+
+    }
+
+
+    setInterval(createFlower, 700);
+
+
+    /* =========================
+       VIEW MEMORIES POPUP
+    ========================= */
+
+    const viewMemoriesBtn =
+        document.getElementById("viewMemoriesBtn");
+
+    const memoryPopup =
+        document.getElementById("memoryPopup");
+
+    const memoryClose =
+        document.getElementById("memoryClose");
+
+
+    function openMemories() {
+
+        if (!memoryPopup) return;
+
+        memoryPopup.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeMemories() {
+
+        if (!memoryPopup) return;
+
+        memoryPopup.classList.remove("show");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    if (viewMemoriesBtn) {
+
+        viewMemoriesBtn.addEventListener(
+            "click",
+            openMemories
+        );
+
+    }
+
+
+    if (memoryClose) {
+
+        memoryClose.addEventListener(
+            "click",
+            closeMemories
+        );
+
+    }
+
+
+    if (memoryPopup) {
+
+        memoryPopup.addEventListener(
+            "click",
+            (event) => {
+
+                if (event.target === memoryPopup) {
+
+                    closeMemories();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       IMAGE VIEWER
+    ========================= */
+
+    const imageViewer =
+        document.getElementById("imageViewer");
+
+    const imageViewerClose =
+        document.getElementById("imageViewerClose");
+
+    const expandedImage =
+        document.getElementById("expandedImage");
+
+    const expandedTitle =
+        document.getElementById("expandedTitle");
+
+    const expandedMessage =
+        document.getElementById("expandedMessage");
+
+
+    function openImage(image, title, message) {
+
+        if (
+            !imageViewer ||
+            !expandedImage
+        ) return;
+
+
+        expandedImage.src = image.src;
+
+
+        expandedTitle.textContent =
+            title ||
+            "A Special Memory ♥";
+
+
+        expandedMessage.textContent =
+            message ||
+            "Every memory with you is something I will always treasure.";
+
+
+        imageViewer.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeImage() {
+
+        if (!imageViewer) return;
+
+        imageViewer.classList.remove("show");
+
+
+        /* Keep memories popup open if it is open */
+
+        if (
+            !memoryPopup ||
+            !memoryPopup.classList.contains("show")
+        ) {
+
+            document.body.style.overflow = "";
+
+        }
+
+    }
+
+
+    /* MAIN 8 PHOTOS */
+
+    document
+        .querySelectorAll(".photo-card")
+        .forEach(card => {
+
+            const image =
+                card.querySelector("img");
+
+
+            card.addEventListener("click", () => {
+
+                openImage(
+
+                    image,
+
+                    card.dataset.title,
+
+                    card.dataset.message
+
                 );
-
-                musicStatus.textContent =
-                    "Playing...";
-
-            })
-
-            .catch(() => {
-
-                musicStatus.textContent =
-                    "Tap again to play";
 
             });
 
-    }
-
-    else {
-
-        music.pause();
-
-    }
-
-}
+        });
 
 
-if (music) {
+    /* 5 COLLAGE PHOTOS */
 
-    music.addEventListener(
-        "pause",
-        () => {
+    document
+        .querySelectorAll(".memory-collage img")
+        .forEach(image => {
 
-            musicToggle.classList.remove(
-                "active"
+            image.addEventListener(
+                "click",
+                () => {
+
+                    openImage(
+
+                        image,
+
+                        image.dataset.title,
+
+                        image.dataset.message
+
+                    );
+
+                }
             );
 
-            if (musicStatus) {
+        });
 
-                musicStatus.textContent =
-                    "Paused";
 
-            }
+    if (imageViewerClose) {
 
-        }
-    );
-
-}
-
-
-/* =========================================
-   FLOATING FLOWERS
-========================================= */
-
-const flowerContainer =
-    document.querySelector(".flowers");
-
-
-const flowers = [
-    "✿",
-    "❀",
-    "❁",
-    "✾",
-    "✽",
-    "❋"
-];
-
-
-function createFlower() {
-
-    if (!flowerContainer) return;
-
-
-    const flower =
-        document.createElement("div");
-
-
-    flower.className = "flower";
-
-
-    flower.innerHTML =
-        flowers[
-            Math.floor(
-                Math.random() *
-                flowers.length
-            )
-        ];
-
-
-    flower.style.left =
-        Math.random() * 100 + "%";
-
-
-    flower.style.fontSize =
-        Math.random() * 12 + 10 + "px";
-
-
-    flower.style.animationDuration =
-        Math.random() * 7 + 8 + "s";
-
-
-    flowerContainer.appendChild(
-        flower
-    );
-
-
-    setTimeout(() => {
-
-        flower.remove();
-
-    }, 18000);
-
-}
-
-
-setInterval(
-    createFlower,
-    500
-);
-
-
-/* =========================================
-   MEMORY COLLAGE POPUP
-========================================= */
-
-const viewMemoriesBtn =
-    document.getElementById(
-        "viewMemoriesBtn"
-    );
-
-
-const memoryPopup =
-    document.getElementById(
-        "memoryPopup"
-    );
-
-
-const memoryClose =
-    document.getElementById(
-        "memoryClose"
-    );
-
-
-function openMemories() {
-
-    if (!memoryPopup) return;
-
-
-    memoryPopup.classList.add(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeMemories() {
-
-    if (!memoryPopup) return;
-
-
-    memoryPopup.classList.remove(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-if (viewMemoriesBtn) {
-
-    viewMemoriesBtn.addEventListener(
-        "click",
-        openMemories
-    );
-
-}
-
-
-if (memoryClose) {
-
-    memoryClose.addEventListener(
-        "click",
-        closeMemories
-    );
-
-}
-
-
-if (memoryPopup) {
-
-    memoryPopup.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target ===
-                memoryPopup
-            ) {
-
-                closeMemories();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   EXPANDED IMAGE + LETTER
-========================================= */
-
-const collageImages =
-    document.querySelectorAll(
-        ".memory-collage img"
-    );
-
-
-const imageViewer =
-    document.getElementById(
-        "imageViewer"
-    );
-
-
-const expandedImage =
-    document.getElementById(
-        "expandedImage"
-    );
-
-
-const expandedTitle =
-    document.getElementById(
-        "expandedTitle"
-    );
-
-
-const expandedMessage =
-    document.getElementById(
-        "expandedMessage"
-    );
-
-
-const imageViewerClose =
-    document.getElementById(
-        "imageViewerClose"
-    );
-
-
-function openImageViewer(image) {
-
-    if (
-        !imageViewer ||
-        !expandedImage
-    ) return;
-
-
-    expandedImage.src =
-        image.src;
-
-
-    expandedImage.alt =
-        image.alt;
-
-
-    expandedTitle.textContent =
-        image.dataset.title ||
-        "Our Memory ♡";
-
-
-    expandedMessage.textContent =
-        image.dataset.message ||
-        "";
-
-
-    imageViewer.classList.add(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeImageViewer() {
-
-    if (!imageViewer) return;
-
-
-    imageViewer.classList.remove(
-        "show"
-    );
-
-
-    /* Keep collage popup open */
-
-    if (
-        memoryPopup &&
-        memoryPopup.classList.contains(
-            "show"
-        )
-    ) {
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-
-    else {
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-}
-
-
-collageImages.forEach(
-    (image) => {
-
-        image.addEventListener(
+        imageViewerClose.addEventListener(
             "click",
-            () => {
+            closeImage
+        );
 
-                openImageViewer(
-                    image
-                );
+    }
+
+
+    if (imageViewer) {
+
+        imageViewer.addEventListener(
+            "click",
+            (event) => {
+
+                if (event.target === imageViewer) {
+
+                    closeImage();
+
+                }
 
             }
         );
 
     }
-);
 
 
-if (imageViewerClose) {
+    /* ESCAPE KEY */
 
-    imageViewerClose.addEventListener(
-        "click",
-        closeImageViewer
-    );
-
-}
-
-
-if (imageViewer) {
-
-    imageViewer.addEventListener(
-        "click",
+    document.addEventListener(
+        "keydown",
         (event) => {
 
-            if (
-                event.target ===
-                imageViewer
-            ) {
+            if (event.key === "Escape") {
 
-                closeImageViewer();
+                if (
+                    imageViewer &&
+                    imageViewer.classList.contains("show")
+                ) {
 
-            }
+                    closeImage();
 
-        }
-    );
+                } else {
 
-}
+                    closeMemories();
 
-
-/* =========================================
-   ESCAPE KEY
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            if (
-                imageViewer &&
-                imageViewer.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeImageViewer();
-
-            }
-
-            else if (
-                memoryPopup &&
-                memoryPopup.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeMemories();
-
-            }
-
-        }
-
-    }
-);            musicToggle.classList.remove(
-                "active"
-            );
-
-            if (musicStatus) {
-
-                musicStatus.textContent =
-                    "Paused";
+                }
 
             }
 
         }
     );
 
-}
 
-
-/* =========================================
-   FLOATING FLOWERS
-========================================= */
-
-const flowerContainer =
-    document.querySelector(".flowers");
-
-
-const flowers = [
-    "✿",
-    "❀",
-    "❁",
-    "✾",
-    "✽",
-    "❋"
-];
-
-
-function createFlower() {
-
-    if (!flowerContainer) return;
-
-
-    const flower =
-        document.createElement("div");
-
-
-    flower.className = "flower";
-
-
-    flower.innerHTML =
-        flowers[
-            Math.floor(
-                Math.random() *
-                flowers.length
-            )
-        ];
-
-
-    flower.style.left =
-        Math.random() * 100 + "%";
-
-
-    flower.style.fontSize =
-        Math.random() * 12 + 10 + "px";
-
-
-    flower.style.animationDuration =
-        Math.random() * 7 + 8 + "s";
-
-
-    flowerContainer.appendChild(
-        flower
-    );
-
-
-    setTimeout(() => {
-
-        flower.remove();
-
-    }, 18000);
-
-}
-
-
-setInterval(
-    createFlower,
-    500
-);
-
-
-/* =========================================
-   MEMORY COLLAGE POPUP
-========================================= */
-
-const viewMemoriesBtn =
-    document.getElementById(
-        "viewMemoriesBtn"
-    );
-
-
-const memoryPopup =
-    document.getElementById(
-        "memoryPopup"
-    );
-
-
-const memoryClose =
-    document.getElementById(
-        "memoryClose"
-    );
-
-
-function openMemories() {
-
-    if (!memoryPopup) return;
-
-
-    memoryPopup.classList.add(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeMemories() {
-
-    if (!memoryPopup) return;
-
-
-    memoryPopup.classList.remove(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-if (viewMemoriesBtn) {
-
-    viewMemoriesBtn.addEventListener(
-        "click",
-        openMemories
-    );
-
-}
-
-
-if (memoryClose) {
-
-    memoryClose.addEventListener(
-        "click",
-        closeMemories
-    );
-
-}
-
-
-if (memoryPopup) {
-
-    memoryPopup.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target ===
-                memoryPopup
-            ) {
-
-                closeMemories();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   EXPANDED IMAGE + LETTER
-========================================= */
-
-const collageImages =
-    document.querySelectorAll(
-        ".memory-collage img"
-    );
-
-
-const imageViewer =
-    document.getElementById(
-        "imageViewer"
-    );
-
-
-const expandedImage =
-    document.getElementById(
-        "expandedImage"
-    );
-
-
-const expandedTitle =
-    document.getElementById(
-        "expandedTitle"
-    );
-
-
-const expandedMessage =
-    document.getElementById(
-        "expandedMessage"
-    );
-
-
-const imageViewerClose =
-    document.getElementById(
-        "imageViewerClose"
-    );
-
-
-function openImageViewer(image) {
-
-    if (
-        !imageViewer ||
-        !expandedImage
-    ) return;
-
-
-    expandedImage.src =
-        image.src;
-
-
-    expandedImage.alt =
-        image.alt;
-
-
-    expandedTitle.textContent =
-        image.dataset.title ||
-        "Our Memory ♡";
-
-
-    expandedMessage.textContent =
-        image.dataset.message ||
-        "";
-
-
-    imageViewer.classList.add(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeImageViewer() {
-
-    if (!imageViewer) return;
-
-
-    imageViewer.classList.remove(
-        "show"
-    );
-
-
-    /* Keep collage popup open */
-
-    if (
-        memoryPopup &&
-        memoryPopup.classList.contains(
-            "show"
-        )
-    ) {
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-
-    else {
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-}
-
-
-collageImages.forEach(
-    (image) => {
-
-        image.addEventListener(
-            "click",
-            () => {
-
-                openImageViewer(
-                    image
-                );
-
-            }
-        );
-
-    }
-);
-
-
-if (imageViewerClose) {
-
-    imageViewerClose.addEventListener(
-        "click",
-        closeImageViewer
-    );
-
-}
-
-
-if (imageViewer) {
-
-    imageViewer.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target ===
-                imageViewer
-            ) {
-
-                closeImageViewer();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   ESCAPE KEY
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            if (
-                imageViewer &&
-                imageViewer.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeImageViewer();
-
-            }
-
-            else if (
-                memoryPopup &&
-                memoryPopup.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeMemories();
-
-            }
-
-        }
-
-    }
-);    const petal = document.createElement("div");
-
-    petal.className = "petal";
-
-    petal.style.left =
-        Math.random() * 100 + "%";
-
-    petal.style.animationDuration =
-        Math.random() * 5 + 7 + "s";
-
-    petalContainer.appendChild(petal);
-
-    setTimeout(() => {
-        petal.remove();
-    }, 15000);
-}
-
-setInterval(createPetal, 900);
+});
