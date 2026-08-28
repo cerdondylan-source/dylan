@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>For My Love ❤️</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
 </head>
+
 
 <body>
 
-    <!-- Floating Decorations -->
+
+    <!-- FLOATING DECORATIONS -->
+
     <div class="hearts"></div>
+
     <div class="flowers"></div>
+
     <div class="petals"></div>
 
 
     <!-- MUSIC -->
+
     <section class="hero">
 
         <div class="music-card">
 
             <div class="music-info">
 
-                <div class="music-icon">🎵</div>
+                <div class="music-icon">
+                    🎵
+                </div>
 
                 <div class="music-text">
-                    <span class="music-label">Our Song</span>
-                    <span id="musicStatus" class="music-status">
-                        Tap to play
+
+                    <span class="music-label">
+                        Our Song
                     </span>
+
+                    <span
+                        id="musicStatus"
+                        class="music-status">
+
+                        Tap to play
+
+                    </span>
+
                 </div>
 
             </div>
 
+
             <button
                 id="musicToggle"
                 class="music-toggle"
-                onclick="toggleMusic()"
+                type="button"
                 aria-label="Toggle Music">
 
                 <span class="toggle-circle"></span>
@@ -54,22 +81,32 @@
 
         </div>
 
+
         <audio id="music" loop>
-            <source src="palayo_sa_mundo.mp3" type="audio/mpeg">
+
+            <source
+                src="palayo_sa_mundo.mp3"
+                type="audio/mpeg">
+
         </audio>
 
     </section>
 
 
     <!-- INTRO -->
+
     <section class="intro">
 
-        <p class="section-label">FOR YOU BABI♥</p>
+        <p class="section-label">
+            FOR YOU BABI ♥
+        </p>
+
 
         <h2>
             Little Moments Of Us,<br>
             And Big Memories Of Us.
         </h2>
+
 
         <p>
             These are some of my favorite moments with you babi byang.
@@ -80,23 +117,30 @@
     </section>
 
 
-    <!-- GALLERY -->
+    <!-- MAIN GALLERY -->
+
     <section class="gallery-section">
 
         <div class="gallery">
 
 
             <!-- PHOTO 01 -->
-            <article class="photo-card">
 
-                <img src="image8.jpg" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="My pretty attitude babi Aivy. ♥"
+                data-message="Somehow, you always manage to make even ordinary days feel special. Every little moment with you becomes something worth remembering.">
+
+                <img
+                    src="image8.jpg"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>01</span>
 
                     <h3>
-                        My pretty attitude babi aivy.♥
+                        My pretty attitude babi Aivy. ♥
                     </h3>
 
                     <p>
@@ -109,16 +153,22 @@
 
 
             <!-- PHOTO 02 -->
-            <article class="photo-card">
 
-                <img src="image9.jpeg" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="Ackkk, That cutiee Smile. ♥"
+                data-message="Your smile will always be one of my favorite things in this world.">
+
+                <img
+                    src="image9.jpeg"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>02</span>
 
                     <h3>
-                        Ackkk, That cutiee Smile.♥
+                        Ackkk, That cutiee Smile. ♥
                     </h3>
 
                     <p>
@@ -131,20 +181,26 @@
 
 
             <!-- PHOTO 03 -->
-            <article class="photo-card">
 
-                <img src="image5.jpeg" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="Us Together bonjingg. ♥"
+                data-message="Wherever we are, being with you makes every place feel like home my babi bonjing.">
+
+                <img
+                    src="image5.jpeg"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>03</span>
 
                     <h3>
-                        Us Together bonjingg.♥
+                        Us Together bonjingg. ♥
                     </h3>
 
                     <p>
-                        Wherever we are, being with you makes the place feel like home my babi bonjing.
+                        Wherever we are, being with you makes the place feel like home.
                     </p>
 
                 </div>
@@ -153,9 +209,15 @@
 
 
             <!-- PHOTO 04 -->
-            <article class="photo-card">
 
-                <img src="image2.png" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="Every moment of us. ♥"
+                data-message="Every picture of us is something I will always keep as a treasure.">
+
+                <img
+                    src="image2.png"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
@@ -163,11 +225,11 @@
 
                     <h3>
                         Every moment of us,
-                        I'll keep it as a treasure.♥
+                        I'll keep it as a treasure. ♥
                     </h3>
 
                     <p>
-                        One picture, one moment, one memory I'll always treasure.
+                        One picture, one moment, one memory.
                     </p>
 
                 </div>
@@ -176,21 +238,26 @@
 
 
             <!-- PHOTO 05 -->
-            <article class="photo-card">
 
-                <img src="image4.jpeg" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="My safest place is being with you. ♥"
+                data-message="Thank you babi Aivy for being someone I can always be myself with.">
+
+                <img
+                    src="image4.jpeg"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>05</span>
 
                     <h3>
-                        My safest place is being with you.♥
+                        My safest place is being with you. ♥
                     </h3>
 
                     <p>
-                        Thank you babi Aivy for being someone
-                        I can always be myself with mwaaa.
+                        Thank you for being someone I can always be myself with.
                     </p>
 
                 </div>
@@ -199,21 +266,26 @@
 
 
             <!-- PHOTO 06 -->
-            <article class="photo-card">
 
-                <img src="image1.png" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="Just us, pretty and handsome spidey. ♥"
+                data-message="I don't need a perfect moment with you. Every second with you is already a blessing babi.">
+
+                <img
+                    src="image1.png"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>06</span>
 
                     <h3>
-                        Just us, pretty and handsome spidey.♥
+                        Just us, pretty and handsome spidey. ♥
                     </h3>
 
                     <p>
-                        I don't need a perfect moment with you.
-                        Every second with you is a blessings babi.
+                        Every second with you is already a blessing.
                     </p>
 
                 </div>
@@ -222,21 +294,26 @@
 
 
             <!-- PHOTO 07 -->
-            <article class="photo-card">
 
-                <img src="image6.jpeg" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="Another favorite memory. ♥"
+                data-message="I could look at this picture a hundred times and still smile.">
+
+                <img
+                    src="image6.jpeg"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>07</span>
 
                     <h3>
-                        Another favorite memory.♥
+                        Another favorite memory. ♥
                     </h3>
 
                     <p>
-                        I could look at this picture
-                        a hundred times and still smile.
+                        I could look at this picture a hundred times and still smile.
                     </p>
 
                 </div>
@@ -245,102 +322,261 @@
 
 
             <!-- PHOTO 08 -->
-            <article class="photo-card">
 
-                <img src="image7.jpeg" alt="Our memory">
+            <article
+                class="photo-card"
+                data-title="One of my favorite pics of us. ♥"
+                data-message="I'm glad I found you Aivy. I will always treasure us and always be proud of us both babi.">
+
+                <img
+                    src="image7.jpeg"
+                    alt="Our memory">
 
                 <div class="photo-info">
 
                     <span>08</span>
 
                     <h3>
-                        One of my favorite pics of us.♥
+                        One of my favorite pics of us. ♥
                     </h3>
 
                     <p>
-                        I'm glad I found you Aivy, and I will treasure you no matter what and I will always be proud of us both babi.
+                        I'm glad I found you Aivy.
                     </p>
 
                 </div>
 
             </article>
 
+
         </div>
 
     </section>
 
 
-   <!-- LOVE MESSAGE -->
-<section class="love-section">
+    <!-- VIEW MEMORIES BUTTON -->
 
-    <details class="love-card">
+    <section class="memory-button-section">
 
-        <summary class="love-preview">
+        <button
+            type="button"
+            class="view-memories-btn"
+            id="viewMemoriesBtn">
 
-            <div class="heart-icon">♥</div>
+            ♡ View Our Memories
 
-            <p class="section-label">
-                A MESSAGE FOR YOU BABI LOVE
+        </button>
+
+    </section>
+
+
+    <!-- FAVORITE MOMENTS POPUP -->
+
+    <div
+        class="memory-popup"
+        id="memoryPopup">
+
+        <div class="memory-popup-card">
+
+
+            <button
+                type="button"
+                class="memory-close"
+                id="memoryClose">
+
+                ×
+
+            </button>
+
+
+            <p class="memory-label">
+                OUR FAVORITE MOMENTS
             </p>
+
 
             <h2>
-                For my beautiful Aivy.
+                Just Us ♡
             </h2>
 
-            <span class="view-letter">
-                💌 Click to View
-            </span>
 
-        </summary>
+            <div class="memory-collage">
 
 
-        <!-- YOUR EXISTING MESSAGE -->
+                <img
+                    src="image10.jpeg"
+                    alt="Memory 1"
+                    data-title="A special memory. ♥"
+                    data-message="A little memory that I will always keep close to my heart.">
 
-        <div class="letter-content">
 
-            <p>
-                Thank you for every laugh, every conversation,
-                every little moments, and every memory we've made. Every obstacle we've been through babi the arguments we choose to let go and choose our love over our pride,
-                know that my biggest and proudest thing I did this year was to reach out my feelings to you and I'm glad I found you aivy byang gwapa,
-                and I will always be proud na it was you a poured my pure love po and you deserved every inch of my love gwapa.😘🌺🌺
-            </p>
+                <img
+                    src="image11.jpeg"
+                    alt="Memory 2"
+                    data-title="Just us being us. ♥"
+                    data-message="One of those moments that became special simply because you were there.">
 
-            <p>
-                I don't know what the future will look like babi love, but I know that I want to keep learning,
-                growing and living a life and make a beautiful memories with you babi and yours only.💋💋🌷🌷
-            </p>
 
-            <p>
-                You are the most beautiful thing to ever happen in my life, I may not be the best but I hope I am one of the best things
-                to ever happen in your beautiful life babi. And I want to be with you my hot pretty stunning cutieee
-                bonjing babi mwaa mwaa.
+                <img
+                    src="image12.jpg"
+                    alt="Memory 3"
+                    data-title="Our beautiful memories. ♥"
+                    data-message="Every picture holds a story that I never want to forget.">
 
-                Stay kind and pure and soulfull and genuine saimong self babi. Never let your negative thougths
-                consume you and overwhelmed your positivity babi.
 
-                Keep chasing your goals and throughout your highest and lowest, your families and friends and specially ako, 
-                will be there for you no matter what it takes babi love.
+                <img
+                    src="image13.png"
+                    alt="Memory 4"
+                    data-title="My favorite people. ♥"
+                    data-message="A memory full of happiness, love, and people that matter to me.">
 
-                We are always so proud of what you did and what you've done
-                babi love.🤍🤍🌺🌺
-            </p>
 
-            <p class="final-love">
-                <strong>I LOVE YOUUUUU BABIIII. 🤍🤍🤗🤗</strong>
-            </p>
+                <img
+                    src="image14.png"
+                    alt="Memory 5"
+                    data-title="A memory to treasure. ♥"
+                    data-message="No matter how much time passes, this moment will always be special to me.">
+
+
+            </div>
 
         </div>
 
-    </details>
+    </div>
 
-</section>
+
+    <!-- EXPANDED IMAGE VIEWER -->
+
+    <div
+        class="image-viewer"
+        id="imageViewer">
+
+        <div class="image-viewer-card">
+
+
+            <button
+                type="button"
+                class="image-viewer-close"
+                id="imageViewerClose">
+
+                ×
+
+            </button>
+
+
+            <div class="expanded-image-box">
+
+                <img
+                    id="expandedImage"
+                    src=""
+                    alt="Expanded memory">
+
+            </div>
+
+
+            <div class="image-message">
+
+                <p>
+                    A SPECIAL MEMORY
+                </p>
+
+                <h2 id="expandedTitle"></h2>
+
+                <div class="message-line"></div>
+
+                <p
+                    class="expanded-message"
+                    id="expandedMessage">
+
+                </p>
+
+                <span>
+                    ♡ Forever & Always ♡
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- LOVE MESSAGE -->
+
+    <section class="love-section">
+
+        <details class="love-card">
+
+            <summary class="love-preview">
+
+                <div class="heart-icon">
+                    ♥
+                </div>
+
+
+                <p class="section-label">
+                    A MESSAGE FOR YOU BABI LOVE
+                </p>
+
+
+                <h2>
+                    For my beautiful Aivy.
+                </h2>
+
+
+                <span class="view-letter">
+                    💌 Click to View
+                </span>
+
+            </summary>
+
+
+            <div class="letter-content">
+
+                <p>
+                    Thank you for every laugh, every conversation,
+                    every little moment, and every memory we've made.
+                    Every obstacle we've been through and every argument
+                    we chose to let go of made me appreciate our love even more.
+                </p>
+
+
+                <p>
+                    I don't know what the future will look like babi love,
+                    but I know that I want to keep learning, growing and
+                    making beautiful memories with you.
+                </p>
+
+
+                <p>
+                    Keep chasing your goals. Throughout your highest and
+                    lowest moments, your family, friends and specially ako
+                    will always be there for you no matter what it takes.
+                </p>
+
+
+                <p class="final-love">
+
+                    <strong>
+                        I LOVE YOUUUUU BABIIII. 🤍🤍🤗🤗
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </details>
+
+    </section>
 
 
     <!-- FOOTER -->
+
     <footer>
 
         <p>
-            Made with love ni gwapa pastilan, and this is just for you babi🤗
+            Made with love ni gwapa pastilan,
+            and this is just for you babi 🤗
         </p>
 
         <span>
@@ -350,147 +586,11 @@
     </footer>
 
 
-    <!-- MUSIC SCRIPT -->
-    <script>
+    <!-- JAVASCRIPT -->
 
-        function toggleMusic() {
-
-            const music = document.getElementById("music");
-            const button = document.getElementById("musicToggle");
-            const status = document.getElementById("musicStatus");
-
-            if (music.paused) {
-
-                music.play()
-                    .then(() => {
-
-                        button.classList.add("active");
-                        status.textContent = "Playing...";
-
-                    })
-                    .catch(() => {
-
-                        status.textContent = "Tap again to play";
-
-                    });
-
-            } else {
-
-                music.pause();
-
-                button.classList.remove("active");
-                status.textContent = "Paused";
-
-            }
-
-        }
-
-    </script>
-
-</body>
-</html>
-
-<!-- MUSIC SCRIPT -->
-<script>
-
-    function toggleMusic() {
-
-        const music = document.getElementById("music");
-        const button = document.getElementById("musicToggle");
-        const status = document.getElementById("musicStatus");
-
-        if (music.paused) {
-
-            music.play()
-                .then(() => {
-
-                    button.classList.add("active");
-                    status.textContent = "Playing...";
-
-                })
-                .catch(() => {
-
-                    status.textContent = "Tap again to play";
-
-                });
-
-        } else {
-
-            music.pause();
-
-            button.classList.remove("active");
-            status.textContent = "Paused";
-
-        }
-
-    }
-
-</script>
-
-
-<!-- IMAGE VIEWER SCRIPT -->
-<script>
-
-const viewer = document.createElement("div");
-
-viewer.className = "image-viewer";
-
-viewer.innerHTML = `
-    <button class="image-viewer-close">×</button>
-    <img src="" alt="Expanded memory">
-`;
-
-document.body.appendChild(viewer);
-
-const viewerImage = viewer.querySelector("img");
-const closeViewer = viewer.querySelector(".image-viewer-close");
-
-document.querySelectorAll(".photo-card img").forEach(image => {
-
-    image.addEventListener("click", function () {
-
-        viewerImage.src = this.src;
-
-        viewer.classList.add("show");
-
-        document.body.style.overflow = "hidden";
-
-    });
-
-});
-
-
-function hideImageViewer() {
-
-    viewer.classList.remove("show");
-
-    document.body.style.overflow = "";
-
-}
-
-
-closeViewer.addEventListener("click", hideImageViewer);
-
-
-viewer.addEventListener("click", function (e) {
-
-    if (e.target === viewer) {
-        hideImageViewer();
-    }
-
-});
-
-
-document.addEventListener("keydown", function (e) {
-
-    if (e.key === "Escape") {
-        hideImageViewer();
-    }
-
-});
-
-</script>
+    <script src="script.js"></script>
 
 
 </body>
-</html>
+
+                    </html>
