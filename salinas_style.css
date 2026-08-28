@@ -1,7 +1,3 @@
-/* =========================================
-   iOS 26 • BROWN LIQUID GLASS
-========================================= */
-
 :root {
     --bg: #1d1917;
     --bg2: #2a2421;
@@ -20,23 +16,22 @@
 }
 
 
-/* =========================================
-   RESET
-========================================= */
-
 * {
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
     margin: 0;
     overflow-x: hidden;
 
     color: var(--text);
+
     font-family: "Poppins", sans-serif;
 
     background:
@@ -46,29 +41,9 @@ body {
 }
 
 
-/* Soft background glow */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255,255,255,.08),
-            transparent 35%
-        );
-
-    z-index: -1;
-}
-
-
-/* =========================================
-   MUSIC / HERO
-========================================= */
+/* =========================
+   MUSIC
+========================= */
 
 .hero {
     min-height: 220px;
@@ -78,9 +53,8 @@ body::before {
     justify-content: center;
 
     padding: 30px 20px;
-
-    background: transparent !important;
 }
+
 
 .music-card {
     width: min(350px, 100%);
@@ -93,27 +67,23 @@ body::before {
 
     background: var(--glass);
 
-    backdrop-filter: blur(25px) saturate(140%);
-    -webkit-backdrop-filter: blur(25px) saturate(140%);
-
     border: 1px solid var(--border);
-    border-radius: 22px;
+
+    border-radius: 50px;
+
+    backdrop-filter: blur(25px);
 
     box-shadow: var(--shadow);
-
-    transition: .3s ease;
 }
 
-.music-card:hover {
-    background: var(--glass-light);
-    transform: translateY(-2px);
-}
 
 .music-info {
     display: flex;
     align-items: center;
+
     gap: 12px;
 }
+
 
 .music-icon {
     width: 42px;
@@ -122,24 +92,23 @@ body::before {
     display: grid;
     place-items: center;
 
-    font-size: 18px;
-
     background: rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 14px;
+    border-radius: 50%;
 }
+
 
 .music-text {
     display: flex;
     flex-direction: column;
 }
 
+
 .music-label {
     font-size: 14px;
     font-weight: 600;
-    color: var(--text);
 }
+
 
 .music-status {
     font-size: 11px;
@@ -147,82 +116,81 @@ body::before {
 }
 
 
-/* Music toggle */
-
 .music-toggle {
     width: 48px;
     height: 28px;
 
-    padding: 0;
+    position: relative;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border: none;
+
     border-radius: 30px;
 
-    background: rgba(255,255,255,.12);
-
-    position: relative;
+    background: rgba(255,255,255,.15);
 
     cursor: pointer;
 }
 
+
 .toggle-circle {
     position: absolute;
 
-    top: 3px;
-    left: 3px;
+    top: 4px;
+    left: 4px;
 
     width: 20px;
     height: 20px;
 
-    background: #fff;
-    border-radius: 50%;
+    background: white;
 
-    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+    border-radius: 50%;
 
     transition: .3s ease;
 }
 
+
 .music-toggle.active {
     background: var(--brown);
 }
+
 
 .music-toggle.active .toggle-circle {
     transform: translateX(20px);
 }
 
 
-/* =========================================
+/* =========================
    INTRO
-========================================= */
+========================= */
 
 .intro {
-    padding: 80px 20px 60px;
+    padding: 70px 20px 50px;
 
     text-align: center;
-
-    background: transparent !important;
 }
 
-.section-label {
-    margin: 0 0 12px;
 
+.section-label,
+.memory-label {
     font-size: 10px;
+
     letter-spacing: 4px;
 
     color: var(--brown-light);
 }
 
+
 .intro h2,
 .love-card h2 {
-    margin: 0 auto 20px;
-
     font-family: "Great Vibes", cursive;
-    font-size: clamp(42px, 8vw, 70px);
-    font-weight: 400;
-    line-height: 1;
 
-    color: var(--text);
+    font-size: clamp(42px, 8vw, 70px);
+
+    font-weight: 400;
+
+    margin: 15px 0 20px;
 }
+
 
 .intro > p:last-child {
     max-width: 650px;
@@ -230,21 +198,21 @@ body::before {
     margin: auto;
 
     font-size: 13px;
+
     line-height: 1.9;
 
     color: var(--muted);
 }
 
 
-/* =========================================
+/* =========================
    GALLERY
-========================================= */
+========================= */
 
 .gallery-section {
-    padding: 30px 20px 90px;
-
-    background: transparent !important;
+    padding: 30px 20px 60px;
 }
+
 
 .gallery {
     width: min(1050px, 100%);
@@ -252,116 +220,530 @@ body::before {
     margin: auto;
 
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
 
     gap: 20px;
 }
 
 
-/* Glass photo card */
-
 .photo-card {
     overflow: hidden;
 
-    background: var(--glass) !important;
+    background: var(--glass);
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
 
-    border: 1px solid var(--border) !important;
-    border-radius: 25px !important;
+    border-radius: 25px;
 
     box-shadow: var(--shadow);
 
-    transition: .35s ease;
+    cursor: pointer;
+
+    transition:
+        transform .35s ease,
+        background .35s ease;
 }
+
 
 .photo-card:hover {
     transform: translateY(-6px);
 
-    background: var(--glass-light) !important;
+    background: var(--glass-light);
 }
 
 
-/* Images */
-
 .photo-card img {
-    display: block;
-
     width: 100%;
     height: 330px;
 
-    object-fit: cover;
-    object-position: center;
+    display: block;
 
-    transition: .5s ease;
+    object-fit: cover;
+
+    transition: .4s ease;
 }
+
 
 .photo-card:hover img {
     transform: scale(1.03);
 }
 
 
-/* Photo information */
-
 .photo-info {
     padding: 19px 21px 23px;
 }
 
-.photo-info > span {
+
+.photo-info span {
     font-size: 10px;
+
     letter-spacing: 3px;
 
     color: var(--brown);
 }
 
+
 .photo-info h3 {
     margin: 8px 0;
 
     font-size: 16px;
-    font-weight: 600;
-
-    color: var(--text);
 }
+
 
 .photo-info p {
     margin: 0;
 
     font-size: 12px;
+
     line-height: 1.7;
 
     color: var(--muted);
 }
 
 
-/* =========================================
+/* =========================
+   VIEW MEMORIES BUTTON
+========================= */
+
+.memory-button-section {
+    display: flex;
+
+    justify-content: center;
+
+    padding: 10px 20px 70px;
+}
+
+
+.view-memories-btn {
+    padding: 15px 28px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50px;
+
+    background: var(--glass);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow: var(--shadow);
+
+    transition: .3s ease;
+}
+
+
+.view-memories-btn:hover {
+    transform: scale(1.04);
+
+    background: var(--glass-light);
+}
+
+
+/* =========================
+   MEMORY POPUP
+========================= */
+
+.memory-popup {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15,12,10,.75);
+
+    backdrop-filter: blur(18px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: opacity .35s ease;
+}
+
+
+.memory-popup.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.memory-popup-card {
+    position: relative;
+
+    width: min(700px, 100%);
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.09);
+
+    border: 1px solid var(--border);
+
+    border-radius: 35px;
+
+    backdrop-filter: blur(30px);
+
+    box-shadow: var(--shadow);
+
+    transform:
+        scale(.85)
+        translateY(30px);
+
+    opacity: 0;
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        opacity .35s ease;
+}
+
+
+.memory-popup.show .memory-popup-card {
+    transform:
+        scale(1)
+        translateY(0);
+
+    opacity: 1;
+}
+
+
+.memory-popup-card h2 {
+    margin: 5px 0 30px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 55px;
+}
+
+
+.memory-close {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.1);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   COLLAGE
+========================= */
+
+.memory-collage {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.memory-collage img {
+    width: 100%;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        filter .3s ease;
+}
+
+
+.memory-collage img:hover {
+    transform: scale(1.04);
+
+    filter: brightness(1.1);
+}
+
+
+.memory-collage img:first-child {
+    grid-column: span 2;
+}
+
+
+.memory-collage img:nth-child(4) {
+    grid-column: span 2;
+}
+
+
+/* =========================
+   EXPANDED IMAGE VIEWER
+========================= */
+
+.image-viewer {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(12,10,9,.82);
+
+    backdrop-filter: blur(25px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .35s ease;
+}
+
+
+.image-viewer.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.image-viewer-card {
+    position: relative;
+
+    width: min(1000px, 100%);
+
+    max-height: 88vh;
+
+    display: grid;
+
+    grid-template-columns: 1.15fr .85fr;
+
+    overflow: hidden;
+
+    background: rgba(45,39,35,.92);
+
+    border: 1px solid var(--border);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.55);
+
+    transform:
+        scale(.8)
+        translateY(40px);
+
+    opacity: 0;
+
+    transition:
+        transform .5s cubic-bezier(.2,.9,.2,1),
+        opacity .35s ease;
+}
+
+
+.image-viewer.show .image-viewer-card {
+    transform:
+        scale(1)
+        translateY(0);
+
+    opacity: 1;
+}
+
+
+.image-viewer-close {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.3);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+
+.image-viewer-close:hover {
+    transform: rotate(90deg);
+}
+
+
+.expanded-image-box {
+    min-height: 500px;
+
+    background: #151210;
+}
+
+
+.expanded-image-box img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    max-height: 85vh;
+
+    background: #151210;
+}
+
+
+.image-message {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 45px 35px;
+
+    background: rgba(255,255,255,.04);
+}
+
+
+.image-message > p:first-child {
+    margin: 0 0 15px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: var(--brown-light);
+}
+
+
+.image-message h2 {
+    margin: 0;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(42px, 6vw, 65px);
+
+    font-weight: 400;
+}
+
+
+.message-line {
+    width: 50px;
+    height: 1px;
+
+    margin: 25px 0;
+
+    background: var(--brown);
+}
+
+
+.expanded-message {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    color: var(--muted);
+}
+
+
+.image-message span {
+    margin-top: 30px;
+
+    color: var(--brown-light);
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 25px;
+}
+
+
+/* =========================
    LOVE MESSAGE
-========================================= */
+========================= */
 
 .love-section {
     padding: 40px 20px 100px;
-
-    background: transparent !important;
 }
+
 
 .love-card {
     width: min(700px, 100%);
 
     margin: auto;
+
     padding: 45px 35px;
 
     text-align: center;
 
-    background: var(--glass) !important;
+    background: var(--glass);
 
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border);
 
-    border: 1px solid var(--border) !important;
-    border-radius: 28px !important;
+    border-radius: 28px;
 
     box-shadow: var(--shadow);
 }
+
+
+.love-preview {
+    cursor: pointer;
+
+    list-style: none;
+}
+
+
+.love-preview::-webkit-details-marker {
+    display: none;
+}
+
 
 .heart-icon {
     width: 48px;
@@ -372,31 +754,48 @@ body::before {
 
     margin: 0 auto 20px;
 
-    font-size: 21px;
-
-    color: #ead9ce;
+    border-radius: 16px;
 
     background: rgba(155,128,108,.2);
-
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 16px;
 }
 
-.love-card p:not(.section-label) {
-    font-size: 13px;
-    line-height: 1.9;
+
+.view-letter {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 12px 22px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.1);
+}
+
+
+.letter-content {
+    margin-top: 30px;
+
+    text-align: left;
 
     color: var(--muted);
+
+    line-height: 1.9;
+
+    font-size: 13px;
 }
 
-.love-card strong {
-    color: var(--text);
+
+.final-love {
+    text-align: center;
 }
 
 
-/* =========================================
+/* =========================
    FOOTER
-========================================= */
+========================= */
 
 footer {
     padding: 45px 20px 60px;
@@ -404,55 +803,72 @@ footer {
     text-align: center;
 
     background: rgba(0,0,0,.15);
-
-    border-top: 1px solid rgba(255,255,255,.08);
 }
 
-footer p {
-    margin: 0 0 8px;
 
+footer p {
     font-size: 12px;
 
     color: var(--muted);
 }
 
+
 footer span {
     font-family: "Great Vibes", cursive;
-    font-size: 28px;
 
-    color: var(--text);
+    font-size: 28px;
 }
 
 
-/* =========================================
-   🌸 SNOWING FLOWERS
-========================================= */
+/* =========================
+   FLOATING DECORATIONS
+========================= */
+
+.flowers,
+.hearts,
+.petals {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
 
 .flowers {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
     z-index: 20;
 }
 
+
+.hearts {
+    z-index: 8;
+}
+
+
+.petals {
+    z-index: 7;
+}
+
+
 .flower {
     position: absolute;
+
     top: -40px;
 
-    color: rgba(220, 198, 184, .7);
+    color: rgba(220,198,184,.7);
 
-    text-shadow: 0 2px 8px rgba(0,0,0,.2);
-
-    animation: flowerSnow linear forwards;
+    animation:
+        flowerSnow linear forwards;
 }
+
 
 @keyframes flowerSnow {
 
     0% {
         transform:
-            translate3d(0, -40px, 0)
+            translateY(-40px)
             rotate(0deg);
+
         opacity: 0;
     }
 
@@ -460,570 +876,62 @@ footer span {
         opacity: 1;
     }
 
-    25% {
-        transform:
-            translate3d(35px, 25vh, 0)
-            rotate(90deg);
-    }
-
-    50% {
-        transform:
-            translate3d(-30px, 50vh, 0)
-            rotate(180deg);
-    }
-
-    75% {
-        transform:
-            translate3d(40px, 75vh, 0)
-            rotate(270deg);
-    }
-
     100% {
         transform:
-            translate3d(-20px, 110vh, 0)
+            translateY(110vh)
+            translateX(30px)
             rotate(360deg);
+
         opacity: 0;
     }
-}
 
-/* =========================================
-   💕 FLOATING HEARTS
-========================================= */
-
-.hearts {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 9;
-}
-
-.hearts::before,
-.hearts::after {
-    content: "♡  ♥  ♡  ♥  ♡";
-
-    position: absolute;
-
-    width: 100%;
-
-    font-size: 15px;
-
-    letter-spacing: 65px;
-
-    color: rgba(190,155,137,.4);
-
-    animation: heartsFloat 18s linear infinite;
-}
-
-.hearts::before {
-    top: -20px;
-}
-
-.hearts::after {
-    top: -100px;
-    opacity: .25;
-
-    animation-delay: -9s;
-}
-
-@keyframes heartsFloat {
-
-    0% {
-        transform: translateY(-20px) scale(.8);
-    }
-
-    50% {
-        transform: translateY(55vh) scale(1);
-    }
-
-    100% {
-        transform: translateY(110vh) scale(.8);
-    }
 }
 
 
-/* =========================================
-   🌷 FALLING PETALS
-========================================= */
-
-.petals {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 8;
-}
-
-.petals::before,
-.petals::after {
-    content: "·  ✦  ·  ✧  ·  ✦";
-
-    position: absolute;
-
-    width: 100%;
-
-    font-size: 13px;
-
-    letter-spacing: 80px;
-
-    color: rgba(220,199,187,.3);
-
-    animation: petalsFall 13s linear infinite;
-}
-
-.petals::before {
-    top: -30px;
-}
-
-.petals::after {
-    top: -150px;
-
-    opacity: .2;
-
-    animation-delay: -6s;
-}
-
-@keyframes petalsFall {
-
-    0% {
-        transform: translateY(-20px) translateX(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(50vh) translateX(35px) rotate(180deg);
-    }
-
-    100% {
-        transform: translateY(110vh) translateX(-30px) rotate(360deg);
-    }
-}
-
-
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media (max-width: 700px) {
 
-    .hero {
-        min-height: 190px;
-        padding: 25px 15px;
-    }
-
-    .intro {
-        padding: 65px 20px 50px;
-    }
-
-    .intro h2,
-    .love-card h2 {
-        font-size: 48px;
-    }
-
     .gallery {
         grid-template-columns: 1fr;
-        gap: 18px;
     }
 
     .photo-card img {
         height: 300px;
     }
 
+    .memory-collage img {
+        height: 120px;
+    }
+
+    .image-viewer-card {
+        grid-template-columns: 1fr;
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+    }
+
+    .expanded-image-box {
+        min-height: 300px;
+    }
+
+    .expanded-image-box img {
+        max-height: 55vh;
+    }
+
+    .image-message {
+        padding: 30px 25px;
+    }
+
+    .image-message h2 {
+        font-size: 48px;
+    }
+
     .love-card {
         padding: 35px 22px;
-        border-radius: 50px !important;
-    }
-}
-
-/* =========================================
-   💌 LOVE LETTER POPUP
-   ADD-ON ONLY — DOES NOT CHANGE EXISTING CSS
-========================================= */
-
-.letter-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    border: 1px solid var(--border);
-    border-radius: 50%;
-
-    background: rgba(20,16,14,.72);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: .35s ease;
-}
-
-.letter-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* Letter */
-
-.view-letter {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 12px 22px;
-
-    border: 1px solid var(--border);
-    border-radius: 16px;
-
-    background: rgba(255,255,255,.10);
-    color: var(--text);
-
-    font-size: 13px;
-    font-weight: 500;
-
-    cursor: pointer;
-
-    box-shadow: 0 6px 20px rgba(0,0,0,.15);
-
-    transition: .3s ease;
-}
-
-.view-letter:hover {
-    background: rgba(255,255,255,.16);
-    transform: translateY(-2px);
-}
-
-
-/* Close button */
-
-.close-letter {
-    position: absolute;
-
-    top: 15px;
-    right: 18px;
-
-    width: 36px;
-    height: 36px;
-
-    border: 1px solid var(--border);
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.08);
-
-    color: var(--text);
-
-    font-size: 23px;
-
-    cursor: pointer;
-
-    transition: .25s;
-}
-
-.close-letter:hover {
-    background: rgba(255,255,255,.16);
-    transform: rotate(90deg);
-}
-
-
-/* Letter heart */
-
-.letter-icon {
-    width: 48px;
-    height: 48px;
-
-    margin: 0 auto 18px;
-
-    display: grid;
-    place-items: center;
-
-    color: #ead9ce;
-
-    background: rgba(155,128,108,.2);
-
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 16px;
-
-    font-size: 21px;
-}
-
-
-/* Letter title */
-
-.letter-card h2 {
-    margin: 0 auto 25px;
-
-    font-family: "Great Vibes", cursive;
-
-    font-size: clamp(42px, 8vw, 65px);
-    font-weight: 400;
-
-    line-height: 1;
-
-    color: var(--text);
-}
-
-
-/* Letter text */
-
-.letter-content {
-    max-width: 600px;
-
-    margin: auto;
-
-    text-align: left;
-
-    font-size: 13px;
-    line-height: 1.9;
-
-    color: var(--muted);
-}
-
-.letter-content p {
-    margin: 0 0 20px;
-}
-
-
-/* Final love */
-
-.final-love {
-    text-align: center;
-
-    color: var(--text) !important;
-
-    font-weight: 600;
-}
-
-
-/* Signature */
-
-.letter-signature {
-    margin-top: 25px;
-    padding-top: 18px;
-
-    border-top: 1px solid var(--border);
-
-    text-align: right;
-
-    font-family: "Great Vibes", cursive;
-
-    font-size: 25px;
-
-    color: var(--muted);
-}
-
-.letter-signature span {
-    color: var(--text);
-}
-
-
-/* Small floating hearts */
-
-.letter-heart {
-    position: absolute;
-
-    color: rgba(190,155,137,.35);
-
-    font-size: 18px;
-
-    animation: letterHeartFloat 4s ease-in-out infinite;
-}
-
-.heart-1 {
-    top: 70px;
-    left: 25px;
-}
-
-.heart-2 {
-    top: 150px;
-    right: 25px;
-    animation-delay: 1s;
-}
-
-.heart-3 {
-    bottom: 100px;
-    left: 30px;
-    animation-delay: 2s;
-}
-
-.heart-4 {
-    bottom: 50px;
-    right: 35px;
-    animation-delay: 1.5s;
-}
-
-@keyframes letterHeartFloat {
-
-    0%, 100% {
-        transform: translateY(0);
     }
 
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-    .letter-card {
-        max-height: 88vh;
-        padding: 40px 22px;
-        border-radius: 24px;
-    }
-
-    .letter-content {
-        font-size: 12px;
-        line-height: 1.8;
-    }
-
-}
-
-/* =========================================
-   🖼️ IMAGE VIEWER
-   ADD-ON ONLY
-========================================= */
-
-.image-viewer {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background: rgba(20, 17, 15, .75);
-
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity .35s ease,
-        visibility .35s ease;
-}
-
-.image-viewer.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* Full image */
-
-.image-viewer img {
-    display: block;
-
-    max-width: 92vw;
-    max-height: 88vh;
-
-    width: auto;
-    height: auto;
-
-    object-fit: contain;
-
-    border-radius: 30px;
-
-    border: 1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.5);
-
-    transform: scale(.82);
-
-    opacity: 0;
-
-    transition:
-        transform .45s cubic-bezier(.22,1,.36,1),
-        opacity .3s ease;
-}
-
-.image-viewer.show img {
-    transform: scale(1);
-    opacity: 1;
-}
-
-
-/* Close button */
-
-.image-viewer-close {
-    position: fixed;
-
-    top: 25px;
-    right: 25px;
-
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-    place-items: center;
-
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.10);
-
-    color: var(--text);
-
-    font-size: 25px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    transition: .25s ease;
-}
-
-.image-viewer-close:hover {
-    background: rgba(255,255,255,.18);
-    transform: scale(1.08);
-}
-
-
-/* Clickable image */
-
-.photo-card img {
-    cursor: pointer;
-}
-
-.photo-card img:active {
-    transform: scale(.97);
-}
-
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-    .image-viewer {
-        padding: 15px;
-    }
-
-    .image-viewer img {
-        max-width: 94vw;
-        max-height: 82vh;
-
-        border-radius: 30px;
-    }
-
-    .image-viewer-close {
-        top: 18px;
-        right: 18px;
-    }
-
-}
+   }
