@@ -5,9 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
        MUSIC
     ========================= */
 
-    const music =
-        document.getElementById("music");
-
+    const music = document.getElementById("music");
     const musicToggle =
         document.getElementById("musicToggle");
 
@@ -17,32 +15,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (music && musicToggle) {
 
-        musicToggle.addEventListener("click", () => {
+        musicToggle.addEventListener("click", async () => {
 
             if (music.paused) {
 
-                music.play()
-                    .then(() => {
+                try {
 
-                        musicToggle.classList.add("active");
+                    await music.play();
 
-                        if (musicStatus) {
-                            musicStatus.textContent = "Playing...";
-                        }
+                    musicToggle.classList.add("active");
 
-                    })
-                    .catch(() => {
+                    if (musicStatus) {
+                        musicStatus.textContent =
+                            "Playing...";
+                    }
 
-                        if (musicStatus) {
-                            musicStatus.textContent =
-                                "Tap again to play";
-                        }
+                } catch (error) {
 
-                    });
+                    if (musicStatus) {
+                        musicStatus.textContent =
+                            "Music file not found";
+                    }
+
+                    console.log(error);
+
+                }
 
             } else {
 
                 music.pause();
+
+                musicToggle.classList.remove("active");
+
+                if (musicStatus) {
+                    musicStatus.textContent =
+                        "Paused";
+                }
 
             }
 
@@ -53,71 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             musicToggle.classList.remove("active");
 
-            if (musicStatus) {
-                musicStatus.textContent = "Paused";
-            }
-
         });
 
     }
-
-
-    /* =========================
-       FLOATING FLOWERS
-    ========================= */
-
-    const flowerContainer =
-        document.querySelector(".flowers");
-
-
-    const flowers = [
-        "✿",
-        "❀",
-        "❁",
-        "✾",
-        "✽",
-        "❋"
-    ];
-
-
-    function createFlower() {
-
-        if (!flowerContainer) return;
-
-        const flower =
-            document.createElement("div");
-
-        flower.className = "flower";
-
-        flower.innerHTML =
-            flowers[
-                Math.floor(
-                    Math.random() * flowers.length
-                )
-            ];
-
-        flower.style.left =
-            Math.random() * 100 + "%";
-
-        flower.style.fontSize =
-            Math.random() * 12 + 10 + "px";
-
-        flower.style.animationDuration =
-            Math.random() * 7 + 8 + "s";
-
-        flowerContainer.appendChild(flower);
-
-
-        setTimeout(() => {
-
-            flower.remove();
-
-        }, 18000);
-
-    }
-
-
-    setInterval(createFlower, 700);
 
 
     /* =========================
@@ -140,7 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         memoryPopup.classList.add("show");
 
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow =
+            "hidden";
 
     }
 
@@ -151,7 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         memoryPopup.classList.remove("show");
 
-        document.body.style.overflow = "";
+        document.body.style.overflow =
+            "";
 
     }
 
@@ -182,10 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             (event) => {
 
-                if (event.target === memoryPopup) {
-
+                if (
+                    event.target === memoryPopup
+                ) {
                     closeMemories();
-
                 }
 
             }
@@ -201,9 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageViewer =
         document.getElementById("imageViewer");
 
-    const imageViewerClose =
-        document.getElementById("imageViewerClose");
-
     const expandedImage =
         document.getElementById("expandedImage");
 
@@ -213,8 +158,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const expandedMessage =
         document.getElementById("expandedMessage");
 
+    const imageViewerClose =
+        document.getElementById(
+            "imageViewerClose"
+        );
 
-    function openImage(image, title, message) {
+
+    function openImage(image) {
 
         if (
             !imageViewer ||
@@ -226,18 +176,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         expandedTitle.textContent =
-            title ||
-            "A Special Memory ♥";
+            image.dataset.title ||
+            "Our Memory ♡";
 
 
         expandedMessage.textContent =
-            message ||
-            "Every memory with you is something I will always treasure.";
+            image.dataset.message ||
+            "Every memory with you is special to me.";
 
 
         imageViewer.classList.add("show");
 
-        document.body.style.overflow = "hidden";
+
+        document.body.style.overflow =
+            "hidden";
 
     }
 
@@ -246,75 +198,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!imageViewer) return;
 
-        imageViewer.classList.remove("show");
+
+        imageViewer.classList.remove(
+            "show"
+        );
 
 
-        /* Keep memories popup open if it is open */
-
-        if (
-            !memoryPopup ||
-            !memoryPopup.classList.contains("show")
-        ) {
-
-            document.body.style.overflow = "";
-
-        }
+        document.body.style.overflow =
+            "";
 
     }
 
 
-    /* MAIN 8 PHOTOS */
+    /* Click images in collage */
 
-    document
-        .querySelectorAll(".photo-card")
-        .forEach(card => {
-
-            const image =
-                card.querySelector("img");
+    const collageImages =
+        document.querySelectorAll(
+            ".memory-collage img"
+        );
 
 
-            card.addEventListener("click", () => {
+    collageImages.forEach((image) => {
 
-                openImage(
+        image.addEventListener(
+            "click",
+            () => {
 
-                    image,
+                openImage(image);
 
-                    card.dataset.title,
+            }
+        );
 
-                    card.dataset.message
-
-                );
-
-            });
-
-        });
+    });
 
 
-    /* 5 COLLAGE PHOTOS */
+    /* Click the 8 gallery cards */
 
-    document
-        .querySelectorAll(".memory-collage img")
-        .forEach(image => {
+    const galleryImages =
+        document.querySelectorAll(
+            ".photo-card img"
+        );
 
-            image.addEventListener(
-                "click",
-                () => {
 
-                    openImage(
+    galleryImages.forEach((image) => {
 
-                        image,
+        image.addEventListener(
+            "click",
+            () => {
 
-                        image.dataset.title,
+                const card =
+                    image.closest(".photo-card");
 
-                        image.dataset.message
 
-                    );
+                if (card) {
+
+                    image.dataset.title =
+                        card.dataset.title;
+
+                    image.dataset.message =
+                        card.dataset.message;
 
                 }
-            );
 
-        });
 
+                openImage(image);
+
+            }
+        );
+
+    });
+
+
+    /* Close expanded image */
 
     if (imageViewerClose) {
 
@@ -332,10 +287,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             (event) => {
 
-                if (event.target === imageViewer) {
-
+                if (
+                    event.target === imageViewer
+                ) {
                     closeImage();
-
                 }
 
             }
@@ -344,30 +299,154 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ESCAPE KEY */
+    /* =========================
+       ESCAPE KEY
+    ========================= */
 
     document.addEventListener(
         "keydown",
         (event) => {
 
-            if (event.key === "Escape") {
+            if (
+                event.key === "Escape"
+            ) {
 
-                if (
-                    imageViewer &&
-                    imageViewer.classList.contains("show")
-                ) {
-
-                    closeImage();
-
-                } else {
-
-                    closeMemories();
-
-                }
+                closeImage();
+                closeMemories();
 
             }
 
         }
+    );
+
+
+    /* =========================
+       FLOATING FLOWERS
+    ========================= */
+
+    const flowerContainer =
+        document.querySelector(".flowers");
+
+
+    const flowers = [
+        "✿",
+        "❀",
+        "❁",
+        "✾",
+        "✽",
+        "❋"
+    ];
+
+
+    function createFlower() {
+
+        if (!flowerContainer) return;
+
+
+        const flower =
+            document.createElement("div");
+
+
+        flower.className = "flower";
+
+
+        flower.innerHTML =
+            flowers[
+                Math.floor(
+                    Math.random() *
+                    flowers.length
+                )
+            ];
+
+
+        flower.style.left =
+            Math.random() * 100 + "%";
+
+
+        flower.style.fontSize =
+            Math.random() * 12 +
+            10 +
+            "px";
+
+
+        flower.style.animationDuration =
+            Math.random() * 7 +
+            8 +
+            "s";
+
+
+        flowerContainer.appendChild(
+            flower
+        );
+
+
+        setTimeout(() => {
+
+            flower.remove();
+
+        }, 18000);
+
+    }
+
+
+    setInterval(
+        createFlower,
+        700
+    );
+
+
+    /* =========================
+       FALLING PETALS
+    ========================= */
+
+    const petalContainer =
+        document.querySelector(".petals");
+
+
+    function createPetal() {
+
+        if (!petalContainer) return;
+
+
+        const petal =
+            document.createElement("div");
+
+
+        petal.className =
+            "petal";
+
+
+        petal.innerHTML =
+            "✦";
+
+
+        petal.style.left =
+            Math.random() * 100 + "%";
+
+
+        petal.style.animationDuration =
+            Math.random() * 5 +
+            7 +
+            "s";
+
+
+        petalContainer.appendChild(
+            petal
+        );
+
+
+        setTimeout(() => {
+
+            petal.remove();
+
+        }, 15000);
+
+    }
+
+
+    setInterval(
+        createPetal,
+        1200
     );
 
 
