@@ -1,317 +1,241 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================================
+   MUSIC
+========================================= */
+
+const music =
+    document.getElementById("music");
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+const musicStatus =
+    document.getElementById("musicStatus");
 
 
-    /* =========================
-       MUSIC
-    ========================= */
+if (musicToggle && music) {
 
-    const music = document.getElementById("music");
-    const musicToggle =
-        document.getElementById("musicToggle");
+    musicToggle.addEventListener(
+        "click",
+        toggleMusic
+    );
 
-    const musicStatus =
-        document.getElementById("musicStatus");
+}
 
 
-    if (music && musicToggle) {
+function toggleMusic() {
 
-        musicToggle.addEventListener("click", async () => {
+    if (music.paused) {
 
-            if (music.paused) {
+        music.play()
 
-                try {
+            .then(() => {
 
-                    await music.play();
+                musicToggle.classList.add(
+                    "active"
+                );
 
-                    musicToggle.classList.add("active");
+                musicStatus.textContent =
+                    "Playing...";
 
-                    if (musicStatus) {
-                        musicStatus.textContent =
-                            "Playing...";
-                    }
+            })
 
-                } catch (error) {
+            .catch(() => {
 
-                    if (musicStatus) {
-                        musicStatus.textContent =
-                            "Music file not found";
-                    }
+                musicStatus.textContent =
+                    "Tap again to play";
 
-                    console.log(error);
+            });
 
-                }
+    }
 
-            } else {
+    else {
 
-                music.pause();
+        music.pause();
 
-                musicToggle.classList.remove("active");
+    }
 
-                if (musicStatus) {
-                    musicStatus.textContent =
-                        "Paused";
-                }
+}
+
+
+if (music) {
+
+    music.addEventListener(
+        "pause",
+        () => {
+
+            musicToggle.classList.remove(
+                "active"
+            );
+
+            if (musicStatus) {
+
+                musicStatus.textContent =
+                    "Paused";
 
             }
 
-        });
+        }
+    );
 
+}
 
-        music.addEventListener("pause", () => {
 
-            musicToggle.classList.remove("active");
+/* =========================================
+   FLOATING FLOWERS
+========================================= */
 
-        });
+const flowerContainer =
+    document.querySelector(".flowers");
 
-    }
 
+const flowers = [
+    "✿",
+    "❀",
+    "❁",
+    "✾",
+    "✽",
+    "❋"
+];
 
-    /* =========================
-       VIEW MEMORIES POPUP
-    ========================= */
 
-    const viewMemoriesBtn =
-        document.getElementById("viewMemoriesBtn");
+function createFlower() {
 
-    const memoryPopup =
-        document.getElementById("memoryPopup");
+    if (!flowerContainer) return;
 
-    const memoryClose =
-        document.getElementById("memoryClose");
 
+    const flower =
+        document.createElement("div");
 
-    function openMemories() {
 
-        if (!memoryPopup) return;
+    flower.className = "flower";
 
-        memoryPopup.classList.add("show");
 
-        document.body.style.overflow =
-            "hidden";
+    flower.innerHTML =
+        flowers[
+            Math.floor(
+                Math.random() *
+                flowers.length
+            )
+        ];
 
-    }
 
+    flower.style.left =
+        Math.random() * 100 + "%";
 
-    function closeMemories() {
 
-        if (!memoryPopup) return;
+    flower.style.fontSize =
+        Math.random() * 12 + 10 + "px";
 
-        memoryPopup.classList.remove("show");
 
-        document.body.style.overflow =
-            "";
+    flower.style.animationDuration =
+        Math.random() * 7 + 8 + "s";
 
-    }
 
+    flowerContainer.appendChild(
+        flower
+    );
 
-    if (viewMemoriesBtn) {
 
-        viewMemoriesBtn.addEventListener(
-            "click",
-            openMemories
-        );
+    setTimeout(() => {
 
-    }
+        flower.remove();
 
+    }, 18000);
 
-    if (memoryClose) {
+}
 
-        memoryClose.addEventListener(
-            "click",
-            closeMemories
-        );
 
-    }
+setInterval(
+    createFlower,
+    500
+);
 
 
-    if (memoryPopup) {
+/* =========================================
+   MEMORY COLLAGE POPUP
+========================================= */
 
-        memoryPopup.addEventListener(
-            "click",
-            (event) => {
+const viewMemoriesBtn =
+    document.getElementById(
+        "viewMemoriesBtn"
+    );
 
-                if (
-                    event.target === memoryPopup
-                ) {
-                    closeMemories();
-                }
 
-            }
-        );
+const memoryPopup =
+    document.getElementById(
+        "memoryPopup"
+    );
 
-    }
 
+const memoryClose =
+    document.getElementById(
+        "memoryClose"
+    );
 
-    /* =========================
-       IMAGE VIEWER
-    ========================= */
 
-    const imageViewer =
-        document.getElementById("imageViewer");
+function openMemories() {
 
-    const expandedImage =
-        document.getElementById("expandedImage");
+    if (!memoryPopup) return;
 
-    const expandedTitle =
-        document.getElementById("expandedTitle");
 
-    const expandedMessage =
-        document.getElementById("expandedMessage");
+    memoryPopup.classList.add(
+        "show"
+    );
 
-    const imageViewerClose =
-        document.getElementById(
-            "imageViewerClose"
-        );
 
+    document.body.style.overflow =
+        "hidden";
 
-    function openImage(image) {
+}
 
-        if (
-            !imageViewer ||
-            !expandedImage
-        ) return;
 
+function closeMemories() {
 
-        expandedImage.src = image.src;
+    if (!memoryPopup) return;
 
 
-        expandedTitle.textContent =
-            image.dataset.title ||
-            "Our Memory ♡";
+    memoryPopup.classList.remove(
+        "show"
+    );
 
 
-        expandedMessage.textContent =
-            image.dataset.message ||
-            "Every memory with you is special to me.";
+    document.body.style.overflow =
+        "";
 
+}
 
-        imageViewer.classList.add("show");
 
+if (viewMemoriesBtn) {
 
-        document.body.style.overflow =
-            "hidden";
+    viewMemoriesBtn.addEventListener(
+        "click",
+        openMemories
+    );
 
-    }
+}
 
 
-    function closeImage() {
+if (memoryClose) {
 
-        if (!imageViewer) return;
+    memoryClose.addEventListener(
+        "click",
+        closeMemories
+    );
 
+}
 
-        imageViewer.classList.remove(
-            "show"
-        );
 
+if (memoryPopup) {
 
-        document.body.style.overflow =
-            "";
-
-    }
-
-
-    /* Click images in collage */
-
-    const collageImages =
-        document.querySelectorAll(
-            ".memory-collage img"
-        );
-
-
-    collageImages.forEach((image) => {
-
-        image.addEventListener(
-            "click",
-            () => {
-
-                openImage(image);
-
-            }
-        );
-
-    });
-
-
-    /* Click the 8 gallery cards */
-
-    const galleryImages =
-        document.querySelectorAll(
-            ".photo-card img"
-        );
-
-
-    galleryImages.forEach((image) => {
-
-        image.addEventListener(
-            "click",
-            () => {
-
-                const card =
-                    image.closest(".photo-card");
-
-
-                if (card) {
-
-                    image.dataset.title =
-                        card.dataset.title;
-
-                    image.dataset.message =
-                        card.dataset.message;
-
-                }
-
-
-                openImage(image);
-
-            }
-        );
-
-    });
-
-
-    /* Close expanded image */
-
-    if (imageViewerClose) {
-
-        imageViewerClose.addEventListener(
-            "click",
-            closeImage
-        );
-
-    }
-
-
-    if (imageViewer) {
-
-        imageViewer.addEventListener(
-            "click",
-            (event) => {
-
-                if (
-                    event.target === imageViewer
-                ) {
-                    closeImage();
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =========================
-       ESCAPE KEY
-    ========================= */
-
-    document.addEventListener(
-        "keydown",
+    memoryPopup.addEventListener(
+        "click",
         (event) => {
 
             if (
-                event.key === "Escape"
+                event.target ===
+                memoryPopup
             ) {
 
-                closeImage();
                 closeMemories();
 
             }
@@ -319,135 +243,204 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-
-    /* =========================
-       FLOATING FLOWERS
-    ========================= */
-
-    const flowerContainer =
-        document.querySelector(".flowers");
+}
 
 
-    const flowers = [
-        "✿",
-        "❀",
-        "❁",
-        "✾",
-        "✽",
-        "❋"
-    ];
+/* =========================================
+   EXPANDED IMAGE + LETTER
+========================================= */
+
+const collageImages =
+    document.querySelectorAll(
+        ".memory-collage img"
+    );
 
 
-    function createFlower() {
-
-        if (!flowerContainer) return;
-
-
-        const flower =
-            document.createElement("div");
+const imageViewer =
+    document.getElementById(
+        "imageViewer"
+    );
 
 
-        flower.className = "flower";
+const expandedImage =
+    document.getElementById(
+        "expandedImage"
+    );
 
 
-        flower.innerHTML =
-            flowers[
-                Math.floor(
-                    Math.random() *
-                    flowers.length
+const expandedTitle =
+    document.getElementById(
+        "expandedTitle"
+    );
+
+
+const expandedMessage =
+    document.getElementById(
+        "expandedMessage"
+    );
+
+
+const imageViewerClose =
+    document.getElementById(
+        "imageViewerClose"
+    );
+
+
+function openImageViewer(image) {
+
+    if (
+        !imageViewer ||
+        !expandedImage
+    ) return;
+
+
+    expandedImage.src =
+        image.src;
+
+
+    expandedImage.alt =
+        image.alt;
+
+
+    expandedTitle.textContent =
+        image.dataset.title ||
+        "Our Memory ♡";
+
+
+    expandedMessage.textContent =
+        image.dataset.message ||
+        "";
+
+
+    imageViewer.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeImageViewer() {
+
+    if (!imageViewer) return;
+
+
+    imageViewer.classList.remove(
+        "show"
+    );
+
+
+    /* Keep collage popup open */
+
+    if (
+        memoryPopup &&
+        memoryPopup.classList.contains(
+            "show"
+        )
+    ) {
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+    else {
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+}
+
+
+collageImages.forEach(
+    (image) => {
+
+        image.addEventListener(
+            "click",
+            () => {
+
+                openImageViewer(
+                    image
+                );
+
+            }
+        );
+
+    }
+);
+
+
+if (imageViewerClose) {
+
+    imageViewerClose.addEventListener(
+        "click",
+        closeImageViewer
+    );
+
+}
+
+
+if (imageViewer) {
+
+    imageViewer.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                imageViewer
+            ) {
+
+                closeImageViewer();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            if (
+                imageViewer &&
+                imageViewer.classList.contains(
+                    "show"
                 )
-            ];
+            ) {
 
+                closeImageViewer();
 
-        flower.style.left =
-            Math.random() * 100 + "%";
+            }
 
+            else if (
+                memoryPopup &&
+                memoryPopup.classList.contains(
+                    "show"
+                )
+            ) {
 
-        flower.style.fontSize =
-            Math.random() * 12 +
-            10 +
-            "px";
+                closeMemories();
 
+            }
 
-        flower.style.animationDuration =
-            Math.random() * 7 +
-            8 +
-            "s";
-
-
-        flowerContainer.appendChild(
-            flower
-        );
-
-
-        setTimeout(() => {
-
-            flower.remove();
-
-        }, 18000);
+        }
 
     }
-
-
-    setInterval(
-        createFlower,
-        700
-    );
-
-
-    /* =========================
-       FALLING PETALS
-    ========================= */
-
-    const petalContainer =
-        document.querySelector(".petals");
-
-
-    function createPetal() {
-
-        if (!petalContainer) return;
-
-
-        const petal =
-            document.createElement("div");
-
-
-        petal.className =
-            "petal";
-
-
-        petal.innerHTML =
-            "✦";
-
-
-        petal.style.left =
-            Math.random() * 100 + "%";
-
-
-        petal.style.animationDuration =
-            Math.random() * 5 +
-            7 +
-            "s";
-
-
-        petalContainer.appendChild(
-            petal
-        );
-
-
-        setTimeout(() => {
-
-            petal.remove();
-
-        }, 15000);
-
-    }
-
-
-    setInterval(
-        createPetal,
-        1200
-    );
-
-
-});
+);
