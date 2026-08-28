@@ -1,3 +1,7 @@
+/* =========================================
+   ROOT
+========================================= */
+
 :root {
     --bg: #1d1917;
     --bg2: #2a2421;
@@ -16,34 +20,35 @@
 }
 
 
+/* =========================================
+   RESET
+========================================= */
+
 * {
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     margin: 0;
     overflow-x: hidden;
 
     color: var(--text);
-
     font-family: "Poppins", sans-serif;
 
     background:
-        radial-gradient(circle at 15% 10%, #4b3b32 0, transparent 28%),
-        radial-gradient(circle at 85% 25%, #39302b 0, transparent 30%),
+        radial-gradient(circle at 15% 10%, #4b3b32, transparent 28%),
+        radial-gradient(circle at 85% 25%, #39302b, transparent 30%),
         linear-gradient(135deg, var(--bg), var(--bg2));
 }
 
 
-/* =========================
+/* =========================================
    MUSIC
-========================= */
+========================================= */
 
 .hero {
     min-height: 220px;
@@ -54,7 +59,6 @@ body {
 
     padding: 30px 20px;
 }
-
 
 .music-card {
     width: min(350px, 100%);
@@ -67,23 +71,19 @@ body {
 
     background: var(--glass);
 
-    border: 1px solid var(--border);
-
-    border-radius: 50px;
-
     backdrop-filter: blur(25px);
+
+    border: 1px solid var(--border);
+    border-radius: 50px;
 
     box-shadow: var(--shadow);
 }
 
-
 .music-info {
     display: flex;
     align-items: center;
-
     gap: 12px;
 }
-
 
 .music-icon {
     width: 42px;
@@ -97,40 +97,34 @@ body {
     border-radius: 50%;
 }
 
-
 .music-text {
     display: flex;
     flex-direction: column;
 }
-
 
 .music-label {
     font-size: 14px;
     font-weight: 600;
 }
 
-
 .music-status {
     font-size: 11px;
     color: var(--muted);
 }
 
-
 .music-toggle {
-    width: 48px;
-    height: 28px;
+    width: 50px;
+    height: 30px;
 
     position: relative;
 
-    border: none;
+    border: 1px solid var(--border);
+    border-radius: 50px;
 
-    border-radius: 30px;
-
-    background: rgba(255,255,255,.15);
+    background: rgba(255,255,255,.12);
 
     cursor: pointer;
 }
-
 
 .toggle-circle {
     position: absolute;
@@ -148,49 +142,42 @@ body {
     transition: .3s ease;
 }
 
-
 .music-toggle.active {
     background: var(--brown);
 }
-
 
 .music-toggle.active .toggle-circle {
     transform: translateX(20px);
 }
 
 
-/* =========================
+/* =========================================
    INTRO
-========================= */
+========================================= */
 
 .intro {
-    padding: 70px 20px 50px;
-
+    padding: 80px 20px 60px;
     text-align: center;
 }
 
-
-.section-label,
-.memory-label {
+.section-label {
     font-size: 10px;
-
     letter-spacing: 4px;
 
     color: var(--brown-light);
 }
 
-
 .intro h2,
 .love-card h2 {
+    margin: 15px auto 20px;
+
     font-family: "Great Vibes", cursive;
 
     font-size: clamp(42px, 8vw, 70px);
-
     font-weight: 400;
 
-    margin: 15px 0 20px;
+    line-height: 1;
 }
-
 
 .intro > p:last-child {
     max-width: 650px;
@@ -198,21 +185,19 @@ body {
     margin: auto;
 
     font-size: 13px;
-
     line-height: 1.9;
 
     color: var(--muted);
 }
 
 
-/* =========================
+/* =========================================
    GALLERY
-========================= */
+========================================= */
 
 .gallery-section {
-    padding: 30px 20px 60px;
+    padding: 30px 20px 70px;
 }
-
 
 .gallery {
     width: min(1050px, 100%);
@@ -226,32 +211,24 @@ body {
     gap: 20px;
 }
 
-
 .photo-card {
     overflow: hidden;
 
     background: var(--glass);
 
     border: 1px solid var(--border);
-
     border-radius: 25px;
 
     box-shadow: var(--shadow);
 
     cursor: pointer;
 
-    transition:
-        transform .35s ease,
-        background .35s ease;
+    transition: transform .35s ease;
 }
-
 
 .photo-card:hover {
     transform: translateY(-6px);
-
-    background: var(--glass-light);
 }
-
 
 .photo-card img {
     width: 100%;
@@ -261,28 +238,23 @@ body {
 
     object-fit: cover;
 
-    transition: .4s ease;
+    transition: transform .4s ease;
 }
-
 
 .photo-card:hover img {
     transform: scale(1.03);
 }
 
-
 .photo-info {
     padding: 19px 21px 23px;
 }
 
-
-.photo-info span {
+.photo-info > span {
     font-size: 10px;
-
     letter-spacing: 3px;
 
     color: var(--brown);
 }
-
 
 .photo-info h3 {
     margin: 8px 0;
@@ -290,120 +262,106 @@ body {
     font-size: 16px;
 }
 
-
 .photo-info p {
     margin: 0;
 
     font-size: 12px;
-
     line-height: 1.7;
 
     color: var(--muted);
 }
 
 
-/* =========================
+/* =========================================
    VIEW MEMORIES BUTTON
-========================= */
+========================================= */
 
 .memory-button-section {
     display: flex;
-
     justify-content: center;
 
-    padding: 10px 20px 70px;
+    padding: 10px 20px 80px;
 }
 
-
 .view-memories-btn {
-    padding: 15px 28px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 50px;
-
-    background: var(--glass);
+    padding: 14px 25px;
 
     color: var(--text);
 
-    font-family: inherit;
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid var(--border);
+    border-radius: 50px;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
 
     cursor: pointer;
 
-    backdrop-filter: blur(20px);
-
-    box-shadow: var(--shadow);
+    backdrop-filter: blur(15px);
 
     transition: .3s ease;
 }
 
-
 .view-memories-btn:hover {
     transform: scale(1.04);
 
-    background: var(--glass-light);
+    background: rgba(255,255,255,.14);
 }
 
 
-/* =========================
+/* =========================================
    MEMORY POPUP
-========================= */
+========================================= */
 
 .memory-popup {
     position: fixed;
 
     inset: 0;
 
-    z-index: 1000;
+    z-index: 999;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(15,12,10,.75);
+    background: rgba(15,12,10,.82);
 
     backdrop-filter: blur(18px);
 
     opacity: 0;
-
     visibility: hidden;
 
-    transition: opacity .35s ease;
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
 }
-
 
 .memory-popup.show {
     opacity: 1;
-
     visibility: visible;
 }
-
 
 .memory-popup-card {
     position: relative;
 
     width: min(700px, 100%);
-
     max-height: 88vh;
 
     overflow-y: auto;
 
-    padding: 35px 25px;
+    padding: 38px 25px;
 
     text-align: center;
 
-    background: rgba(255,255,255,.09);
+    background: rgba(255,255,255,.10);
 
     border: 1px solid var(--border);
-
     border-radius: 35px;
 
     backdrop-filter: blur(30px);
-
-    box-shadow: var(--shadow);
 
     transform:
         scale(.85)
@@ -411,11 +369,8 @@ body {
 
     opacity: 0;
 
-    transition:
-        transform .45s cubic-bezier(.2,.8,.2,1),
-        opacity .35s ease;
+    transition: .45s cubic-bezier(.2,.9,.2,1);
 }
-
 
 .memory-popup.show .memory-popup-card {
     transform:
@@ -425,56 +380,65 @@ body {
     opacity: 1;
 }
 
+.memory-label {
+    margin: 0;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: var(--brown-light);
+}
 
 .memory-popup-card h2 {
-    margin: 5px 0 30px;
+    margin: 10px 0 25px;
 
     font-family: "Great Vibes", cursive;
 
     font-size: 55px;
+    font-weight: 400;
 }
-
 
 .memory-close {
     position: absolute;
 
     top: 15px;
-    right: 18px;
+    right: 15px;
 
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     border: 1px solid var(--border);
-
     border-radius: 50%;
 
-    background: rgba(255,255,255,.1);
+    background: rgba(255,255,255,.10);
 
     color: white;
 
-    font-size: 25px;
+    font-size: 26px;
 
     cursor: pointer;
 }
 
 
-/* =========================
+/* =========================================
    COLLAGE
-========================= */
+========================================= */
 
 .memory-collage {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        1fr 1.4fr 1fr;
 
     gap: 10px;
 }
 
-
 .memory-collage img {
     width: 100%;
-    height: 150px;
+    height: 160px;
+
+    display: block;
 
     object-fit: cover;
 
@@ -487,27 +451,22 @@ body {
         filter .3s ease;
 }
 
-
 .memory-collage img:hover {
     transform: scale(1.04);
-
-    filter: brightness(1.1);
 }
 
-
-.memory-collage img:first-child {
+.memory-collage img:nth-child(1) {
     grid-column: span 2;
 }
-
 
 .memory-collage img:nth-child(4) {
     grid-column: span 2;
 }
 
 
-/* =========================
+/* =========================================
    EXPANDED IMAGE VIEWER
-========================= */
+========================================= */
 
 .image-viewer {
     position: fixed;
@@ -517,73 +476,115 @@ body {
     z-index: 2000;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(12,10,9,.82);
+    background: rgba(10,8,7,.86);
 
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(20px);
 
     opacity: 0;
-
     visibility: hidden;
 
-    transition: .35s ease;
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
 }
-
 
 .image-viewer.show {
     opacity: 1;
-
     visibility: visible;
 }
-
 
 .image-viewer-card {
     position: relative;
 
     width: min(1000px, 100%);
-
     max-height: 88vh;
 
     display: grid;
 
-    grid-template-columns: 1.15fr .85fr;
+    grid-template-columns: 1.2fr .8fr;
 
     overflow: hidden;
 
-    background: rgba(45,39,35,.92);
+    background: rgba(42,36,33,.95);
 
     border: 1px solid var(--border);
-
     border-radius: 35px;
 
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.55);
+    box-shadow: 0 30px 100px rgba(0,0,0,.6);
 
-    transform:
-        scale(.8)
-        translateY(40px);
-
-    opacity: 0;
+    transform: scale(.9);
 
     transition:
-        transform .5s cubic-bezier(.2,.9,.2,1),
-        opacity .35s ease;
+        transform .4s cubic-bezier(.2,.9,.2,1);
 }
-
 
 .image-viewer.show .image-viewer-card {
-    transform:
-        scale(1)
-        translateY(0);
-
-    opacity: 1;
+    transform: scale(1);
 }
 
+.expanded-image-wrap {
+    min-height: 400px;
+
+    background: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#expandedImage {
+    width: 100%;
+    height: 100%;
+
+    max-height: 88vh;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.image-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 45px;
+
+    text-align: left;
+}
+
+.image-number {
+    margin: 0 0 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: var(--brown-light);
+}
+
+.image-message h2 {
+    margin: 0 0 20px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(45px, 6vw, 70px);
+
+    font-weight: 400;
+}
+
+.image-message > p:last-child {
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    color: var(--muted);
+}
 
 .image-viewer-close {
     position: absolute;
@@ -597,141 +598,39 @@ body {
     height: 42px;
 
     border: 1px solid var(--border);
-
     border-radius: 50%;
 
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.35);
 
     color: white;
 
-    font-size: 28px;
+    font-size: 27px;
 
     cursor: pointer;
-
-    transition: .25s ease;
 }
 
 
-.image-viewer-close:hover {
-    transform: rotate(90deg);
-}
-
-
-.expanded-image-box {
-    min-height: 500px;
-
-    background: #151210;
-}
-
-
-.expanded-image-box img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    max-height: 85vh;
-
-    background: #151210;
-}
-
-
-.image-message {
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    padding: 45px 35px;
-
-    background: rgba(255,255,255,.04);
-}
-
-
-.image-message > p:first-child {
-    margin: 0 0 15px;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    color: var(--brown-light);
-}
-
-
-.image-message h2 {
-    margin: 0;
-
-    font-family: "Great Vibes", cursive;
-
-    font-size: clamp(42px, 6vw, 65px);
-
-    font-weight: 400;
-}
-
-
-.message-line {
-    width: 50px;
-    height: 1px;
-
-    margin: 25px 0;
-
-    background: var(--brown);
-}
-
-
-.expanded-message {
-    margin: 0;
-
-    font-size: 13px;
-
-    line-height: 1.9;
-
-    color: var(--muted);
-}
-
-
-.image-message span {
-    margin-top: 30px;
-
-    color: var(--brown-light);
-
-    font-family: "Great Vibes", cursive;
-
-    font-size: 25px;
-}
-
-
-/* =========================
-   LOVE MESSAGE
-========================= */
+/* =========================================
+   LOVE CARD
+========================================= */
 
 .love-section {
     padding: 40px 20px 100px;
 }
 
-
 .love-card {
     width: min(700px, 100%);
 
     margin: auto;
-
-    padding: 45px 35px;
+    padding: 40px 30px;
 
     text-align: center;
 
     background: var(--glass);
 
     border: 1px solid var(--border);
-
-    border-radius: 28px;
-
-    box-shadow: var(--shadow);
+    border-radius: 30px;
 }
-
 
 .love-preview {
     cursor: pointer;
@@ -739,11 +638,9 @@ body {
     list-style: none;
 }
 
-
 .love-preview::-webkit-details-marker {
     display: none;
 }
-
 
 .heart-icon {
     width: 48px;
@@ -752,50 +649,45 @@ body {
     display: grid;
     place-items: center;
 
-    margin: 0 auto 20px;
+    margin: auto;
 
-    border-radius: 16px;
+    border-radius: 50%;
 
-    background: rgba(155,128,108,.2);
+    background: rgba(255,255,255,.08);
 }
-
 
 .view-letter {
     display: inline-block;
 
-    margin-top: 12px;
-
     padding: 12px 22px;
-
-    border: 1px solid var(--border);
 
     border-radius: 50px;
 
     background: rgba(255,255,255,.1);
 }
 
-
 .letter-content {
-    margin-top: 30px;
+    max-width: 600px;
+
+    margin: 30px auto 0;
 
     text-align: left;
 
     color: var(--muted);
 
-    line-height: 1.9;
-
     font-size: 13px;
-}
 
+    line-height: 1.9;
+}
 
 .final-love {
     text-align: center;
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
     padding: 45px 20px 60px;
@@ -805,64 +697,49 @@ footer {
     background: rgba(0,0,0,.15);
 }
 
-
 footer p {
     font-size: 12px;
 
     color: var(--muted);
 }
 
-
 footer span {
     font-family: "Great Vibes", cursive;
 
-    font-size: 28px;
+    font-size: 30px;
 }
 
 
-/* =========================
-   FLOATING DECORATIONS
-========================= */
+/* =========================================
+   DECORATIONS
+========================================= */
 
 .flowers,
-.hearts,
-.petals {
+.petals,
+.hearts {
     position: fixed;
 
     inset: 0;
 
     pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 5;
 }
 
-
-.flowers {
-    z-index: 20;
-}
-
-
-.hearts {
-    z-index: 8;
-}
-
-
-.petals {
-    z-index: 7;
-}
-
-
-.flower {
+.flower,
+.petal {
     position: absolute;
 
     top: -40px;
 
     color: rgba(220,198,184,.7);
 
-    animation:
-        flowerSnow linear forwards;
+    animation: fall linear forwards;
 }
 
-
-@keyframes flowerSnow {
+@keyframes fall {
 
     0% {
         transform:
@@ -879,7 +756,6 @@ footer span {
     100% {
         transform:
             translateY(110vh)
-            translateX(30px)
             rotate(360deg);
 
         opacity: 0;
@@ -888,9 +764,9 @@ footer span {
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 700px) {
 
@@ -914,24 +790,20 @@ footer span {
         overflow-y: auto;
     }
 
-    .expanded-image-box {
-        min-height: 300px;
+    .expanded-image-wrap {
+        min-height: auto;
     }
 
-    .expanded-image-box img {
+    #expandedImage {
         max-height: 55vh;
     }
 
     .image-message {
-        padding: 30px 25px;
+        padding: 25px;
     }
 
     .image-message h2 {
         font-size: 48px;
     }
 
-    .love-card {
-        padding: 35px 22px;
     }
-
-       }
