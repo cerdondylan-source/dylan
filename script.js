@@ -624,3 +624,187 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================
+   VIDEO VIEWER
+========================================= */
+
+const videoCard =
+    document.getElementById(
+        "videoCard"
+    );
+
+
+const videoViewer =
+    document.getElementById(
+        "videoViewer"
+    );
+
+
+const fullVideo =
+    document.getElementById(
+        "fullVideo"
+    );
+
+
+const videoViewerClose =
+    document.getElementById(
+        "videoViewerClose"
+    );
+
+
+function openVideo() {
+
+    if (
+        !videoViewer ||
+        !fullVideo
+    ) return;
+
+
+    videoViewer.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    /* Reset video */
+
+    fullVideo.currentTime = 0;
+
+
+    /* Play only after user clicks */
+
+    fullVideo.play()
+        .catch(
+            () => {
+
+                console.log(
+                    "Tap play to start video"
+                );
+
+            }
+        );
+
+}
+
+
+function closeVideo() {
+
+    if (
+        !videoViewer ||
+        !fullVideo
+    ) return;
+
+
+    /* Stop video */
+
+    fullVideo.pause();
+
+    fullVideo.currentTime = 0;
+
+
+    videoViewer.classList.remove(
+        "show"
+    );
+
+
+    /* Keep other popup open */
+
+    if (
+        imageViewer &&
+        imageViewer.classList.contains(
+            "show"
+        )
+    ) {
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+    else if (
+        memoryPopup &&
+        memoryPopup.classList.contains(
+            "show"
+        )
+    ) {
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+    else {
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+}
+
+
+if (videoCard) {
+
+    videoCard.addEventListener(
+        "click",
+        openVideo
+    );
+
+}
+
+
+if (videoViewerClose) {
+
+    videoViewerClose.addEventListener(
+        "click",
+        closeVideo
+    );
+
+}
+
+
+if (videoViewer) {
+
+    videoViewer.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                videoViewer
+            ) {
+
+                closeVideo();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* VIDEO ESCAPE KEY */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            videoViewer &&
+            videoViewer.classList.contains(
+                "show"
+            )
+        ) {
+
+            closeVideo();
+
+        }
+
+    }
+);
