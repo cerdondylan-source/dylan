@@ -392,6 +392,114 @@ function closeImageViewer() {
 }
 
 
+/* =========================================
+   EXPANDED IMAGE VIEWER
+========================================= */
+
+const collageImages =
+    document.querySelectorAll(
+        ".memory-collage img"
+    );
+
+const imageViewer =
+    document.getElementById(
+        "imageViewer"
+    );
+
+const expandedImage =
+    document.getElementById(
+        "expandedImage"
+    );
+
+const expandedTitle =
+    document.getElementById(
+        "expandedTitle"
+    );
+
+const expandedMessage =
+    document.getElementById(
+        "expandedMessage"
+    );
+
+const imageViewerClose =
+    document.getElementById(
+        "imageViewerClose"
+    );
+
+
+function openImageViewer(image) {
+
+    if (
+        !imageViewer ||
+        !expandedImage
+    ) return;
+
+
+    expandedImage.src =
+        image.src;
+
+    expandedImage.alt =
+        image.alt;
+
+
+    if (expandedTitle) {
+
+        expandedTitle.textContent =
+            image.dataset.title ||
+            "Our Memory ♡";
+
+    }
+
+
+    if (expandedMessage) {
+
+        expandedMessage.textContent =
+            image.dataset.message ||
+            "";
+
+    }
+
+
+    imageViewer.classList.add(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeImageViewer() {
+
+    if (!imageViewer) return;
+
+
+    imageViewer.classList.remove(
+        "show"
+    );
+
+
+    if (
+        memoryPopup &&
+        memoryPopup.classList.contains(
+            "show"
+        )
+    ) {
+
+        document.body.style.overflow =
+            "hidden";
+
+    } else {
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+}
+
+
 collageImages.forEach(
     (image) => {
 
@@ -808,3 +916,4 @@ document.addEventListener(
 
     }
 );
+   
