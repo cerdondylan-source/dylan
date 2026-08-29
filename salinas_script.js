@@ -6,7 +6,6 @@ const music = document.getElementById("music");
 const musicToggle = document.getElementById("musicToggle");
 const musicStatus = document.getElementById("musicStatus");
 
-
 function toggleMusic() {
 
     if (!music) return;
@@ -25,7 +24,7 @@ function toggleMusic() {
             .catch(() => {
 
                 musicStatus.textContent =
-                    "Music file not found";
+                    "Unable to play music";
 
             });
 
@@ -54,11 +53,11 @@ if (music) {
         "pause",
         () => {
 
-            musicToggle.classList.remove(
-                "active"
-            );
-
             if (!music.ended) {
+
+                musicToggle.classList.remove(
+                    "active"
+                );
 
                 musicStatus.textContent =
                     "Paused";
@@ -311,10 +310,6 @@ function openImageViewer(image) {
     ) return;
 
 
-    expandedImage.style.opacity = "0";
-    expandedImage.style.transform = "scale(.96)";
-
-
     expandedImage.src =
         image.src;
 
@@ -345,124 +340,6 @@ function openImageViewer(image) {
         "show"
     );
 
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    requestAnimationFrame(() => {
-
-        expandedImage.style.opacity = "";
-        expandedImage.style.transform = "";
-
-    });
-
-}
-
-
-function closeImageViewer() {
-
-    if (!imageViewer) return;
-
-
-    imageViewer.classList.remove(
-        "show"
-    );
-
-
-    if (
-        memoryPopup &&
-        memoryPopup.classList.contains(
-            "show"
-        )
-    ) {
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-
-    else {
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-}
-
-
-/* =========================================
-   EXPANDED IMAGE VIEWER
-========================================= */
-
-const collageImages =
-    document.querySelectorAll(
-        ".memory-collage img"
-    );
-
-const imageViewer =
-    document.getElementById(
-        "imageViewer"
-    );
-
-const expandedImage =
-    document.getElementById(
-        "expandedImage"
-    );
-
-const expandedTitle =
-    document.getElementById(
-        "expandedTitle"
-    );
-
-const expandedMessage =
-    document.getElementById(
-        "expandedMessage"
-    );
-
-const imageViewerClose =
-    document.getElementById(
-        "imageViewerClose"
-    );
-
-
-function openImageViewer(image) {
-
-    if (
-        !imageViewer ||
-        !expandedImage
-    ) return;
-
-
-    expandedImage.src =
-        image.src;
-
-    expandedImage.alt =
-        image.alt;
-
-
-    if (expandedTitle) {
-
-        expandedTitle.textContent =
-            image.dataset.title ||
-            "Our Memory ♡";
-
-    }
-
-
-    if (expandedMessage) {
-
-        expandedMessage.textContent =
-            image.dataset.message ||
-            "";
-
-    }
-
-
-    imageViewer.classList.add(
-        "show"
-    );
 
     document.body.style.overflow =
         "hidden";
@@ -565,190 +442,6 @@ const videoViewer =
     );
 
 
-const expandedVideo =
-    document.getElementById(
-        "expandedVideo"
-    );
-
-
-const videoClose =
-    document.getElementById(
-        "videoClose"
-    );
-
-
-function openVideoViewer() {
-
-    if (
-        !videoViewer ||
-        !expandedVideo
-    ) return;
-
-
-    videoViewer.classList.add(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-
-    expandedVideo.currentTime =
-        0;
-
-
-    expandedVideo.play()
-        .catch(() => {});
-
-}
-
-
-function closeVideoViewer() {
-
-    if (
-        !videoViewer ||
-        !expandedVideo
-    ) return;
-
-
-    expandedVideo.pause();
-
-
-    videoViewer.classList.remove(
-        "show"
-    );
-
-
-    if (
-        memoryPopup &&
-        memoryPopup.classList.contains(
-            "show"
-        )
-    ) {
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-
-    else {
-
-        document.body.style.overflow =
-            "";
-
-    }
-
-}
-
-
-if (videoCard) {
-
-    videoCard.addEventListener(
-        "click",
-        openVideoViewer
-    );
-
-}
-
-
-if (videoClose) {
-
-    videoClose.addEventListener(
-        "click",
-        closeVideoViewer
-    );
-
-}
-
-
-if (videoViewer) {
-
-    videoViewer.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target ===
-                videoViewer
-            ) {
-
-                closeVideoViewer();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   ESCAPE KEY
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            if (
-                videoViewer &&
-                videoViewer.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeVideoViewer();
-
-            }
-
-            else if (
-                imageViewer &&
-                imageViewer.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeImageViewer();
-
-            }
-
-            else if (
-                memoryPopup &&
-                memoryPopup.classList.contains(
-                    "show"
-                )
-            ) {
-
-                closeMemories();
-
-            }
-
-        }
-
-    }
-);
-
-/* =========================================
-   VIDEO VIEWER
-========================================= */
-
-const videoCard =
-    document.getElementById(
-        "videoCard"
-    );
-
-
-const videoViewer =
-    document.getElementById(
-        "videoViewer"
-    );
-
-
 const fullVideo =
     document.getElementById(
         "fullVideo"
@@ -778,23 +471,18 @@ function openVideo() {
         "hidden";
 
 
-    /* Reset video */
+    fullVideo.currentTime =
+        0;
 
-    fullVideo.currentTime = 0;
-
-
-    /* Play only after user clicks */
 
     fullVideo.play()
-        .catch(
-            () => {
+        .catch(() => {
 
-                console.log(
-                    "Tap play to start video"
-                );
+            console.log(
+                "Press play to start video"
+            );
 
-            }
-        );
+        });
 
 }
 
@@ -807,11 +495,11 @@ function closeVideo() {
     ) return;
 
 
-    /* Stop video */
-
     fullVideo.pause();
 
-    fullVideo.currentTime = 0;
+
+    fullVideo.currentTime =
+        0;
 
 
     videoViewer.classList.remove(
@@ -819,21 +507,7 @@ function closeVideo() {
     );
 
 
-    /* Keep other popup open */
-
     if (
-        imageViewer &&
-        imageViewer.classList.contains(
-            "show"
-        )
-    ) {
-
-        document.body.style.overflow =
-            "hidden";
-
-    }
-
-    else if (
         memoryPopup &&
         memoryPopup.classList.contains(
             "show"
@@ -843,9 +517,7 @@ function closeVideo() {
         document.body.style.overflow =
             "hidden";
 
-    }
-
-    else {
+    } else {
 
         document.body.style.overflow =
             "";
@@ -896,24 +568,52 @@ if (videoViewer) {
 }
 
 
-/* VIDEO ESCAPE KEY */
+/* =========================================
+   ESCAPE KEY
+========================================= */
 
 document.addEventListener(
     "keydown",
     (event) => {
 
         if (
-            event.key === "Escape" &&
-            videoViewer &&
-            videoViewer.classList.contains(
-                "show"
-            )
+            event.key === "Escape"
         ) {
 
-            closeVideo();
+            if (
+                videoViewer &&
+                videoViewer.classList.contains(
+                    "show"
+                )
+            ) {
+
+                closeVideo();
+
+            }
+
+            else if (
+                imageViewer &&
+                imageViewer.classList.contains(
+                    "show"
+                )
+            ) {
+
+                closeImageViewer();
+
+            }
+
+            else if (
+                memoryPopup &&
+                memoryPopup.classList.contains(
+                    "show"
+                )
+            ) {
+
+                closeMemories();
+
+            }
 
         }
 
     }
 );
-   
