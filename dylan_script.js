@@ -2,57 +2,48 @@
    MUSIC
 ========================================= */
 
-const music =
-    document.getElementById("music");
-
-const musicToggle =
-    document.getElementById("musicToggle");
-
-const musicStatus =
-    document.getElementById("musicStatus");
-
-
-if (musicToggle && music) {
-
-    musicToggle.addEventListener(
-        "click",
-        toggleMusic
-    );
-
-}
+const music = document.getElementById("music");
+const musicToggle = document.getElementById("musicToggle");
+const musicStatus = document.getElementById("musicStatus");
 
 
 function toggleMusic() {
 
+    if (!music) return;
+
     if (music.paused) {
 
         music.play()
-
             .then(() => {
 
-                musicToggle.classList.add(
-                    "active"
-                );
+                musicToggle.classList.add("active");
 
                 musicStatus.textContent =
                     "Playing...";
 
             })
-
             .catch(() => {
 
                 musicStatus.textContent =
-                    "Tap again to play";
+                    "Music file not found";
 
             });
 
-    }
-
-    else {
+    } else {
 
         music.pause();
 
     }
+
+}
+
+
+if (musicToggle) {
+
+    musicToggle.addEventListener(
+        "click",
+        toggleMusic
+    );
 
 }
 
@@ -67,12 +58,38 @@ if (music) {
                 "active"
             );
 
-            if (musicStatus) {
+            if (!music.ended) {
 
                 musicStatus.textContent =
                     "Paused";
 
             }
+
+        }
+    );
+
+
+    music.addEventListener(
+        "playing",
+        () => {
+
+            musicToggle.classList.add(
+                "active"
+            );
+
+            musicStatus.textContent =
+                "Playing...";
+
+        }
+    );
+
+
+    music.addEventListener(
+        "error",
+        () => {
+
+            musicStatus.textContent =
+                "Music file not found";
 
         }
     );
@@ -110,7 +127,7 @@ function createFlower() {
     flower.className = "flower";
 
 
-    flower.innerHTML =
+    flower.textContent =
         flowers[
             Math.floor(
                 Math.random() *
@@ -147,12 +164,12 @@ function createFlower() {
 
 setInterval(
     createFlower,
-    500
+    800
 );
 
 
 /* =========================================
-   MEMORY COLLAGE POPUP
+   MEMORY POPUP
 ========================================= */
 
 const viewMemoriesBtn =
@@ -247,7 +264,7 @@ if (memoryPopup) {
 
 
 /* =========================================
-   EXPANDED IMAGE + LETTER
+   EXPANDED IMAGE VIEWER
 ========================================= */
 
 const collageImages =
@@ -294,6 +311,14 @@ function openImageViewer(image) {
     ) return;
 
 
+    /* Reset image animation */
+
+    expandedImage.style.opacity = "0";
+    expandedImage.style.transform = "scale(.96)";
+
+
+    /* Load clicked image */
+
     expandedImage.src =
         image.src;
 
@@ -302,14 +327,22 @@ function openImageViewer(image) {
         image.alt;
 
 
-    expandedTitle.textContent =
-        image.dataset.title ||
-        "Our Memory ♡";
+    if (expandedTitle) {
+
+        expandedTitle.textContent =
+            image.dataset.title ||
+            "Our Memory ♡";
+
+    }
 
 
-    expandedMessage.textContent =
-        image.dataset.message ||
-        "";
+    if (expandedMessage) {
+
+        expandedMessage.textContent =
+            image.dataset.message ||
+            "";
+
+    }
 
 
     imageViewer.classList.add(
@@ -319,6 +352,16 @@ function openImageViewer(image) {
 
     document.body.style.overflow =
         "hidden";
+
+
+    /* Trigger iOS style image animation */
+
+    requestAnimationFrame(() => {
+
+        expandedImage.style.opacity = "";
+        expandedImage.style.transform = "";
+
+    });
 
 }
 
@@ -333,7 +376,7 @@ function closeImageViewer() {
     );
 
 
-    /* Keep collage popup open */
+    /* Keep memory popup open */
 
     if (
         memoryPopup &&
