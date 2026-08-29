@@ -98,114 +98,6 @@ if (music) {
 
 
 /* =========================================
-   VIDEO VIEWER
-========================================= */
-
-const videoButton =
-    document.getElementById(
-        "videoButton"
-    );
-
-
-const videoViewer =
-    document.getElementById(
-        "videoViewer"
-    );
-
-
-const loveVideo =
-    document.getElementById(
-        "loveVideo"
-    );
-
-
-const videoViewerClose =
-    document.getElementById(
-        "videoViewerClose"
-    );
-
-
-function openVideoViewer() {
-
-    if (!videoViewer) return;
-
-
-    videoViewer.classList.add(
-        "show"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-function closeVideoViewer() {
-
-    if (!videoViewer) return;
-
-
-    videoViewer.classList.remove(
-        "show"
-    );
-
-
-    if (loveVideo) {
-
-        loveVideo.pause();
-
-    }
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-if (videoButton) {
-
-    videoButton.addEventListener(
-        "click",
-        openVideoViewer
-    );
-
-}
-
-
-if (videoViewerClose) {
-
-    videoViewerClose.addEventListener(
-        "click",
-        closeVideoViewer
-    );
-
-}
-
-
-if (videoViewer) {
-
-    videoViewer.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target ===
-                videoViewer
-            ) {
-
-                closeVideoViewer();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
    FLOATING FLOWERS
 ========================================= */
 
@@ -540,6 +432,140 @@ if (imageViewer) {
             ) {
 
                 closeImageViewer();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   VIDEO VIEWER
+========================================= */
+
+const videoCard =
+    document.getElementById(
+        "videoCard"
+    );
+
+
+const videoViewer =
+    document.getElementById(
+        "videoViewer"
+    );
+
+
+const expandedVideo =
+    document.getElementById(
+        "expandedVideo"
+    );
+
+
+const videoClose =
+    document.getElementById(
+        "videoClose"
+    );
+
+
+function openVideoViewer() {
+
+    if (
+        !videoViewer ||
+        !expandedVideo
+    ) return;
+
+
+    videoViewer.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    expandedVideo.currentTime =
+        0;
+
+
+    expandedVideo.play()
+        .catch(() => {});
+
+}
+
+
+function closeVideoViewer() {
+
+    if (
+        !videoViewer ||
+        !expandedVideo
+    ) return;
+
+
+    expandedVideo.pause();
+
+
+    videoViewer.classList.remove(
+        "show"
+    );
+
+
+    if (
+        memoryPopup &&
+        memoryPopup.classList.contains(
+            "show"
+        )
+    ) {
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+    else {
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+}
+
+
+if (videoCard) {
+
+    videoCard.addEventListener(
+        "click",
+        openVideoViewer
+    );
+
+}
+
+
+if (videoClose) {
+
+    videoClose.addEventListener(
+        "click",
+        closeVideoViewer
+    );
+
+}
+
+
+if (videoViewer) {
+
+    videoViewer.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                videoViewer
+            ) {
+
+                closeVideoViewer();
 
             }
 
