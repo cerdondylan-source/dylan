@@ -119,52 +119,6 @@ body {
     color: var(--muted);
 }
 
-
-/* RIGHT SIDE BUTTONS */
-
-.media-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
-/* VIDEO BUTTON */
-
-.video-button {
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-    place-items: center;
-
-    border: 1px solid var(--border);
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, .12);
-
-    color: white;
-
-    font-size: 15px;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(20px);
-
-    transition:
-        transform .35s cubic-bezier(.34, 1.56, .64, 1),
-        background .3s ease;
-}
-
-.video-button:hover,
-.video-button:active {
-    transform: scale(1.12);
-    background: var(--brown);
-}
-
-
-/* MUSIC TOGGLE */
-
 .music-toggle {
     position: relative;
 
@@ -206,140 +160,6 @@ body {
 
 .music-toggle.active .toggle-circle {
     transform: translateX(20px);
-}
-
-
-/* =========================================
-   VIDEO VIEWER
-========================================= */
-
-.video-viewer {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 10001;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(5, 5, 5, .78);
-
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity .35s ease,
-        visibility .35s ease;
-}
-
-.video-viewer.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.video-viewer-card {
-    position: relative;
-
-    width: min(1000px, 100%);
-    max-height: 90vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(70, 61, 56, .98),
-            rgba(34, 30, 28, .98)
-        );
-
-    border: 1px solid rgba(255, 255, 255, .16);
-
-    border-radius: 32px;
-
-    box-shadow:
-        0 35px 110px rgba(0, 0, 0, .75);
-
-    transform:
-        scale(.82)
-        translateY(40px);
-
-    transition:
-        transform .6s cubic-bezier(.22, 1.35, .36, 1);
-}
-
-.video-viewer.show .video-viewer-card {
-    transform:
-        scale(1)
-        translateY(0);
-}
-
-.video-viewer video {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    max-height: 82vh;
-
-    border-radius: 24px;
-
-    background: black;
-
-    opacity: 0;
-
-    transform: scale(.96);
-
-    transition:
-        opacity .4s ease .1s,
-        transform .6s cubic-bezier(.34, 1.56, .64, 1) .1s;
-}
-
-.video-viewer.show video {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.video-viewer-close {
-    position: absolute;
-
-    top: -10px;
-    right: -10px;
-
-    z-index: 10;
-
-    width: 42px;
-    height: 42px;
-
-    border: 1px solid var(--border);
-    border-radius: 50%;
-
-    background: rgba(30, 30, 30, .85);
-
-    color: white;
-
-    font-size: 26px;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(20px);
-
-    transition:
-        transform .35s cubic-bezier(.34, 1.56, .64, 1);
-}
-
-.video-viewer-close:hover {
-    transform: scale(1.1);
 }
 
 
@@ -675,6 +495,86 @@ body {
 
 
 /* =========================================
+   VIDEO CARD - EMPTY RIGHT SIDE
+========================================= */
+
+.video-card {
+    position: relative;
+
+    width: 100%;
+    height: 155px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, .08);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .25);
+
+    transition:
+        transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.video-card:hover {
+    transform: scale(1.04);
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    pointer-events: none;
+}
+
+.video-play-button {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 52px;
+    height: 52px;
+
+    display: grid;
+    place-items: center;
+
+    transform: translate(-50%, -50%);
+
+    border:
+        1px solid rgba(255, 255, 255, .25);
+
+    border-radius: 50%;
+
+    background:
+        rgba(20, 20, 20, .45);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    color: white;
+
+    font-size: 18px;
+
+    transition:
+        transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.video-card:hover .video-play-button {
+    transform:
+        translate(-50%, -50%)
+        scale(1.12);
+}
+
+
+/* =========================================
    EXPANDED IMAGE VIEWER
 ========================================= */
 
@@ -707,6 +607,9 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
+
+/* iOS STYLE EXPANDED CARD */
 
 .image-viewer-card {
     position: relative;
@@ -878,6 +781,95 @@ body {
     z-index: 10;
 
     background: rgba(20, 20, 20, .7);
+}
+
+
+/* =========================================
+   FULL VIDEO VIEWER
+========================================= */
+
+.video-viewer {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10001;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+
+    background:
+        rgba(5, 5, 5, .88);
+
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+}
+
+.video-viewer.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-viewer video {
+    width: 100%;
+    max-width: 900px;
+
+    max-height: 90vh;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, .8);
+
+    transform:
+        scale(.85);
+
+    transition:
+        transform .55s cubic-bezier(.22, 1.35, .36, 1);
+}
+
+.video-viewer.show video {
+    transform:
+        scale(1);
+}
+
+.video-close {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 2;
+
+    width: 44px;
+    height: 44px;
+
+    border:
+        1px solid rgba(255, 255, 255, .2);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, .12);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
 }
 
 
@@ -1164,6 +1156,10 @@ footer span {
         grid-column: span 1;
     }
 
+    .video-card {
+        height: 130px;
+    }
+
     .image-viewer {
         padding: 12px;
     }
@@ -1203,39 +1199,17 @@ footer span {
         right: 12px;
     }
 
+    .video-viewer video {
+        border-radius: 20px;
+    }
+
+    .video-close {
+        top: 12px;
+        right: 12px;
+    }
+
     .love-card {
         padding: 35px 22px;
-    }
-
-
-    /* VIDEO MOBILE */
-
-    .media-buttons {
-        gap: 8px;
-    }
-
-    .video-button {
-        width: 38px;
-        height: 38px;
-    }
-
-    .video-viewer {
-        padding: 10px;
-    }
-
-    .video-viewer-card {
-        padding: 8px;
-        border-radius: 24px;
-    }
-
-    .video-viewer video {
-        max-height: 78vh;
-        border-radius: 18px;
-    }
-
-    .video-viewer-close {
-        top: 8px;
-        right: 8px;
     }
 
    }
