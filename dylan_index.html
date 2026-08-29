@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -64,7 +63,9 @@
         </div>
 
 
-        <audio id="music" loop preload="auto">
+        <audio id="music"
+               loop
+               preload="auto">
 
             <source
                 src="palayo_sa_mundo.mp3"
@@ -314,6 +315,7 @@
 
         <div class="memory-popup-card">
 
+
             <button
                 type="button"
                 class="memory-close"
@@ -372,30 +374,38 @@
                     data-message="Awwwww that small shy rubbing sa iyang hands huhu. Cute nimo Aivy byang ueyyy until now samot ka buyag akong asawa mwaaa. Stay cute, positive, kind and beautiful heart babi. I love you very muchieee babii. HAPPY BIRTHDAY GWAPAA BONJING BYANG, enjoy your 20th birthday babi!!">
 
 
-                <!-- VIDEO -->
-<button
-    type="button"
-    class="video-card"
-    id="videoCard"
-    aria-label="Play birthday video">
+                <!-- VIDEO IN EMPTY RIGHT SIDE -->
+                <button
+                    type="button"
+                    class="video-card"
+                    id="videoCard"
+                    aria-label="Play birthday video">
 
-    <video
-        id="videoPreview"
-        muted
-        playsinline
-        preload="metadata">
+                    <video
+                        id="videoPreview"
+                        muted
+                        playsinline
+                        preload="metadata">
 
-        <source
-            src="VID_20260828_185823_873.mp4"
-            type="video/mp4">
+                        <source
+                            src="VID_20260828_185823_873.mp4"
+                            type="video/mp4">
 
-    </video>
+                    </video>
 
-    <div class="video-play-icon">
-        ▶
+                    <div class="video-play-icon">
+                        ▶
+                    </div>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
     </div>
 
-</button>
 
     <!-- EXPANDED IMAGE VIEWER -->
     <div class="image-viewer"
@@ -414,7 +424,6 @@
             </button>
 
 
-            <!-- FULL IMAGE -->
             <div class="expanded-image-area">
 
                 <img
@@ -425,7 +434,6 @@
             </div>
 
 
-            <!-- LETTER -->
             <div class="expanded-letter">
 
                 <p class="expanded-label">
@@ -458,35 +466,38 @@
     </div>
 
 
-    <!-- VIDEO VIEWER -->
-<div
-    class="video-viewer"
-    id="videoViewer">
-
-    <button
-        type="button"
-        class="video-viewer-close"
-        id="videoViewerClose">
-
-        ×
-
-    </button>
+    <!-- FULL VIDEO VIEWER -->
+    <div
+        class="video-viewer"
+        id="videoViewer">
 
 
-    <video
-        id="fullVideo"
-        controls
-        playsinline>
+        <button
+            type="button"
+            class="video-viewer-close"
+            id="videoViewerClose">
 
-        <source
-            src="VID_20260828_185823_873.mp4"
-            type="video/mp4">
+            ×
 
-        Your browser does not support video.
+        </button>
 
-    </video>
 
-</div>
+        <video
+            id="fullVideo"
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+                src="VID_20260828_185823_873.mp4"
+                type="video/mp4">
+
+            Your browser does not support video.
+
+        </video>
+
+
+    </div>
 
 
     <!-- LOVE MESSAGE -->
@@ -585,4 +596,4 @@
 
 </body>
 
-                    </html>
+</html>
