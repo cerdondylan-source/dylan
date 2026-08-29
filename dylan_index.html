@@ -12,16 +12,6 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
-          rel="stylesheet">
-
 </head>
 
 
@@ -64,7 +54,7 @@
                 type="button"
                 id="musicToggle"
                 class="music-toggle"
-                aria-label="Toggle Music">
+                aria-label="Play music">
 
                 <span class="toggle-circle"></span>
 
@@ -73,7 +63,7 @@
         </div>
 
 
-        <audio id="music" loop>
+        <audio id="music" loop preload="auto">
 
             <source
                 src="palayo_sa_mundo.mp3"
@@ -344,7 +334,6 @@
             </h2>
 
 
-            <!-- 5 CLICKABLE MEMORIES -->
             <div class="memory-collage">
 
 
@@ -352,14 +341,14 @@
                     src="image10.jpeg"
                     alt="Memory 1"
                     data-title="JUST US BOTH BEING HOT AND CUTE BABI MWEHEHE!♡"
-                    data-message="Every pictures of us both babi becomes a beautiful memories with you po, adn I will always treasure the memories that we create together babi.">
+                    data-message="Every picture of us both babi becomes a beautiful memory with you po, and I will always treasure the memories that we create together babi.">
 
 
                 <img
                     src="image11.jpeg"
                     alt="Memory 2"
                     data-title="ONE OF MY FAVORITE PIC OF US BOTH DEAR!♡"
-                    data-message="No matter where we are or what we are doing babi feels genuine peace and calm, being with you always makes the moment feel complete palangga mwaaa I love you!!.">
+                    data-message="No matter where we are or what we are doing babi, being with you always feels genuine, peaceful and complete palangga mwaaa I love you!!">
 
 
                 <img
@@ -373,15 +362,16 @@
                     src="image13.png"
                     alt="Memory 4"
                     data-title="ONE OF MY FAV PIC OF YOU AS A BABY BABI HUHU!! ♡"
-                    data-message="You're so adorable and tiny here babi huhu, hueyy kagigil mwaaa cute uy buyag!!"
+                    data-message="You're so adorable and tiny here babi huhu. Hueyy kagigil mwaaa, cute uy buyag!!">
 
 
                 <img
                     src="image14.png"
                     alt="Memory 5"
                     data-title="MY CUTIEE BONJING BABII HUHU!! ♡"
-                    data-message="Awwwww tha small shy rubbing saiyang hands huhu cute nimo aivy byang ueyyy until now samot ka buyag akong asawa mwaaa pastilan, stay cute positive kind and beautiful heart babi.
-                    I love you very muchieee babii, HAPPY BIRTHDAY GWAPAA BONJING BYANG, Enjoy your 20th birthday babi!!
+                    data-message="Awwwww that small shy rubbing sa iyang hands huhu. Cute nimo Aivy byang ueyyy until now samot ka buyag akong asawa mwaaa. Stay cute, positive, kind and beautiful heart babi. I love you very muchieee babii. HAPPY BIRTHDAY GWAPAA BONJING BYANG, enjoy your 20th birthday babi!!">
+
+
             </div>
 
         </div>
@@ -430,8 +420,7 @@
                 </h2>
 
 
-                <p id="expandedMessage">
-                </p>
+                <p id="expandedMessage"></p>
 
 
                 <div class="letter-heart">
@@ -542,9 +531,7 @@
     </footer>
 
 
-    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
-
-</html>
+    </html>
