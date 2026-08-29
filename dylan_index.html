@@ -64,9 +64,7 @@
         </div>
 
 
-        <audio id="music"
-               loop
-               preload="auto">
+        <audio id="music" loop preload="auto">
 
             <source
                 src="palayo_sa_mundo.mp3"
@@ -107,9 +105,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image8.jpg"
-                    alt="Our memory">
+                <img src="image8.jpg"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -131,9 +128,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image9.jpeg"
-                    alt="Our memory">
+                <img src="image9.jpeg"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -155,9 +151,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image5.jpeg"
-                    alt="Our memory">
+                <img src="image5.jpeg"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -179,9 +174,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image2.png"
-                    alt="Our memory">
+                <img src="image2.png"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -204,9 +198,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image4.jpeg"
-                    alt="Our memory">
+                <img src="image4.jpeg"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -228,9 +221,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image1.png"
-                    alt="Our memory">
+                <img src="image1.png"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -252,9 +244,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image6.jpeg"
-                    alt="Our memory">
+                <img src="image6.jpeg"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -276,9 +267,8 @@
 
             <article class="photo-card">
 
-                <img
-                    src="image7.jpeg"
-                    alt="Our memory">
+                <img src="image7.jpeg"
+                     alt="Our memory">
 
                 <div class="photo-info">
 
@@ -303,10 +293,9 @@
     </section>
 
 
-    <!-- VIEW MEMORIES + VIDEO BUTTON -->
+    <!-- VIEW MEMORIES BUTTON -->
     <section class="memory-button-section">
 
-        <!-- EXISTING MEMORY BUTTON -->
         <button
             type="button"
             class="view-memories-btn"
@@ -316,25 +305,12 @@
 
         </button>
 
-
-        <!-- VIDEO BUTTON ON THE RIGHT -->
-        <button
-            type="button"
-            class="video-button"
-            id="videoBtn"
-            aria-label="Open video">
-
-            ▶
-
-        </button>
-
     </section>
 
 
     <!-- MEMORY COLLAGE POPUP -->
-    <div
-        class="memory-popup"
-        id="memoryPopup">
+    <div class="memory-popup"
+         id="memoryPopup">
 
         <div class="memory-popup-card">
 
@@ -396,6 +372,29 @@
                     data-message="Awwwww that small shy rubbing sa iyang hands huhu. Cute nimo Aivy byang ueyyy until now samot ka buyag akong asawa mwaaa. Stay cute, positive, kind and beautiful heart babi. I love you very muchieee babii. HAPPY BIRTHDAY GWAPAA BONJING BYANG, enjoy your 20th birthday babi!!">
 
 
+                <!-- VIDEO IN THE EMPTY RIGHT SIDE -->
+                <div
+                    class="video-card"
+                    id="videoCard">
+
+                    <video
+                        id="memoryVideo"
+                        preload="metadata">
+
+                        <source
+                            src="VID_20260828_185823_873.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+
+                    <div class="video-play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+
             </div>
 
         </div>
@@ -404,9 +403,8 @@
 
 
     <!-- EXPANDED IMAGE VIEWER -->
-    <div
-        class="image-viewer"
-        id="imageViewer">
+    <div class="image-viewer"
+         id="imageViewer">
 
         <div class="image-viewer-card">
 
@@ -461,6 +459,35 @@
 
 
         </div>
+
+    </div>
+
+
+    <!-- FULL VIDEO VIEWER -->
+    <div
+        class="video-viewer"
+        id="videoViewer">
+
+        <button
+            type="button"
+            class="video-close"
+            id="videoClose">
+
+            ×
+
+        </button>
+
+
+        <video
+            id="expandedVideo"
+            controls
+            playsinline>
+
+            <source
+                src="VID_20260828_185823_873.mp4"
+                type="video/mp4">
+
+        </video>
 
     </div>
 
@@ -557,36 +584,8 @@
     </footer>
 
 
-    <!-- =====================================
-         VIDEO POPUP
-         VIDEO ONLY - NO TEXT
-    ====================================== -->
-    <div
-        class="video-popup"
-        id="videoPopup">
-
-        <div class="video-popup-card">
-
-            <video
-                id="birthdayVideo"
-                controls
-                playsinline
-                preload="metadata">
-
-                <source
-                    src="VID_20260828_185823_873.mp4"
-                    type="video/mp4">
-
-            </video>
-
-        </div>
-
-    </div>
-
-
-    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
 
-    </html>
+                    </html>
