@@ -98,6 +98,114 @@ if (music) {
 
 
 /* =========================================
+   VIDEO VIEWER
+========================================= */
+
+const videoButton =
+    document.getElementById(
+        "videoButton"
+    );
+
+
+const videoViewer =
+    document.getElementById(
+        "videoViewer"
+    );
+
+
+const loveVideo =
+    document.getElementById(
+        "loveVideo"
+    );
+
+
+const videoViewerClose =
+    document.getElementById(
+        "videoViewerClose"
+    );
+
+
+function openVideoViewer() {
+
+    if (!videoViewer) return;
+
+
+    videoViewer.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeVideoViewer() {
+
+    if (!videoViewer) return;
+
+
+    videoViewer.classList.remove(
+        "show"
+    );
+
+
+    if (loveVideo) {
+
+        loveVideo.pause();
+
+    }
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+if (videoButton) {
+
+    videoButton.addEventListener(
+        "click",
+        openVideoViewer
+    );
+
+}
+
+
+if (videoViewerClose) {
+
+    videoViewerClose.addEventListener(
+        "click",
+        closeVideoViewer
+    );
+
+}
+
+
+if (videoViewer) {
+
+    videoViewer.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                videoViewer
+            ) {
+
+                closeVideoViewer();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
    FLOATING FLOWERS
 ========================================= */
 
@@ -311,13 +419,9 @@ function openImageViewer(image) {
     ) return;
 
 
-    /* Reset image animation */
-
     expandedImage.style.opacity = "0";
     expandedImage.style.transform = "scale(.96)";
 
-
-    /* Load clicked image */
 
     expandedImage.src =
         image.src;
@@ -354,8 +458,6 @@ function openImageViewer(image) {
         "hidden";
 
 
-    /* Trigger iOS style image animation */
-
     requestAnimationFrame(() => {
 
         expandedImage.style.opacity = "";
@@ -375,8 +477,6 @@ function closeImageViewer() {
         "show"
     );
 
-
-    /* Keep memory popup open */
 
     if (
         memoryPopup &&
@@ -462,6 +562,17 @@ document.addEventListener(
         ) {
 
             if (
+                videoViewer &&
+                videoViewer.classList.contains(
+                    "show"
+                )
+            ) {
+
+                closeVideoViewer();
+
+            }
+
+            else if (
                 imageViewer &&
                 imageViewer.classList.contains(
                     "show"
